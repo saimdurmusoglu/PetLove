@@ -1,0 +1,53 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primary: #F6B83D;
+  --color-primary-light: #FFF4DF;
+  --color-text: #262626;
+  --color-white: #FFFFFF;
+  --color-error: #EF2447;
+  --color-success: #3CBC81;
+  --color-border: #F6B83D;
+
+  --font-main: 'Manrope', sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 30px;
+
+  --transition: 250ms ease;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background-color: var(--color-white);
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
