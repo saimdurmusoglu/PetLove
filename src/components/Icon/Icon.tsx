@@ -7,9 +7,13 @@ interface IconProps {
 
 const Icon = ({ name, width = 24, height = 24, className }: IconProps) => {
   return (
-    <svg width={width} height={height} className={className}>
-      <use href={`/src/assets/sprite/sprite.svg#icon-${name}`} />
-    </svg>
+    <img
+      src={new URL(`../../assets/icons/${name}.svg`, import.meta.url).href}
+      width={width}
+      height={height}
+      className={className}
+      alt={name}
+    />
   );
 };
 

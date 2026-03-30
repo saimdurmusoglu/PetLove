@@ -1,0 +1,239 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: var(--color-white);
+}
+
+.headerHome {
+  background-color: transparent;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 20px;
+  width: 100%;
+}
+
+.containerHome {
+  padding: 28px 40px;
+}
+
+.logo img {
+  height: 28px;
+  width: auto;
+}
+
+.burgerBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.iconWhite {
+  color: var(--color-white);
+  fill: var(--color-white);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(38, 38, 38, 0.5);
+  z-index: 200;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 218px;
+  height: 100vh;
+  background: var(--color-white);
+  padding: 236px 49px 40px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.menuHome {
+  background-color: var(--color-primary);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 28px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 119px;
+  height: 48px;
+  padding: 15px 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.navLink:hover {
+  border-color: var(--color-primary);
+}
+
+.navLink.active {
+  border-color: var(--color-primary);
+}
+
+.navLinkHome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 119px;
+  height: 48px;
+  padding: 15px 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  color: var(--color-white);
+  transition: border-color var(--transition), opacity var(--transition);
+}
+
+.navLinkHome:hover {
+  opacity: 0.8;
+}
+
+.navLinkHome.active {
+  border-color: var(--color-white);
+}
+
+.authNav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+  padding: 0 20px;
+  margin-left: -49px;
+  margin-right: -49px;
+}
+
+.loginBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 178px;
+  height: 42px;
+  padding: 12px 67px;
+  border-radius: var(--radius-lg);
+  background: var(--color-primary);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  color: var(--color-white);
+  transition: opacity var(--transition);
+}
+
+.loginBtn:hover {
+  opacity: 0.8;
+}
+
+.registerBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 178px;
+  height: 42px;
+  padding: 12px 28px;
+  border-radius: var(--radius-lg);
+  background: var(--color-primary-light);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  color: var(--color-primary);
+  transition: opacity var(--transition);
+}
+
+.registerBtn:hover {
+  opacity: 0.8;
+}
+
+.userNav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.userBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 178px;
+  height: 42px;
+  padding: 12px 28px;
+  border-radius: var(--radius-lg);
+  background: var(--color-primary-light);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: opacity var(--transition);
+}
+
+.logoutBtn:hover {
+  opacity: 0.8;
+}
