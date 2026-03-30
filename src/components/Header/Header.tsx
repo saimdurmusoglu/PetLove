@@ -31,11 +31,40 @@ const Header = () => {
           />
         </Link>
 
-        <button className={styles.burgerBtn} onClick={toggleMenu}>
-          <svg width={28} height={28} className={isHome ? styles.iconWhite : ''}>
-            <use href="/sprite/sprite.svg#icon-burger" />
-          </svg>
-        </button>
+        <div className={styles.headerRight}>
+          {!isLoggedIn && (
+            <div className={styles.authButtons}>
+              <Link to="/login" className={styles.loginBtnHeader}>
+                Log In
+              </Link>
+              <Link to="/register" className={styles.registerBtnHeader}>
+                Registration
+              </Link>
+            </div>
+          )}
+
+          {isHome && isLoggedIn && (
+            <Link to="/profile" className={styles.userIconBtn}>
+              {user?.avatar ? (
+                <img src={user.avatar} alt="avatar" className={styles.avatarSmall} />
+              ) : (
+                <svg width={40} height={40}>
+                  <use href="/sprite/sprite.svg#icon-user" />
+                </svg>
+              )}
+            </Link>
+          )}
+
+          <button className={styles.burgerBtn} onClick={toggleMenu}>
+            <svg
+              width={28}
+              height={28}
+              className={isHome ? styles.iconWhite : ''}
+            >
+              <use href="/sprite/sprite.svg#icon-burger" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {isMenuOpen && (
