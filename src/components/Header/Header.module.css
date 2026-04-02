@@ -8,7 +8,7 @@
 }
 
 .headerHome {
-  background-color: var(--color-primary);
+  background-color: transparent;
 }
 
 .container {
@@ -403,11 +403,11 @@
 /* tablet 768px */
 @media (min-width: 768px) {
   .container {
-    padding: 28px 32px;
+    padding: 43px 32px;
   }
 
   .containerHome {
-    padding: 28px 32px;
+    padding: 43px 64px;
   }
 
   .logo img {
@@ -488,13 +488,13 @@
 /* desktop 1280px */
 @media (min-width: 1280px) {
   .container {
-    padding: 28px 64px;
+    padding: 32px 64px;
     max-width: 1280px;
     margin: 0 auto;
   }
 
   .containerHome {
-    padding: 28px 64px;
+    padding: 32px 96px;
   }
 
   .logo img {

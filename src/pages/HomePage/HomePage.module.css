@@ -1,0 +1,130 @@
+.main {
+  min-height: 100vh;
+  background-color: var(--color-white);
+  padding-top: 10px;
+}
+
+.hero {
+  overflow: hidden;
+  margin: 0 20px;
+  background-color: transparent;
+}
+
+.heroContent {
+  border-radius: 30px;
+  padding: 118px 20px 50px;
+  background-color: var(--color-primary);
+}
+
+.title {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  color: var(--color-white);
+  margin-bottom: 24px;
+}
+
+.accent {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.desc {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.286;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+}
+
+.heroImageWrap {
+  width: 100%;
+  height: 402px;
+  margin-top: 0;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* tablet 768px */
+@media (min-width: 768px) {
+  .hero {
+    margin: 16px 32px;
+    overflow: hidden;
+    display: block;
+  }
+
+  .heroContent {
+    border-radius: 60px;
+    padding: 178px 32px 44px;
+    width: 100%;
+    height: 496px;
+  }
+
+  .title {
+    font-size: 80px;
+    line-height: 0.9625;
+    margin-bottom: 32px;
+  }
+
+  .desc {
+    font-size: 18px;
+    line-height: 1.223;
+    padding-left: 385px;
+  }
+
+  .heroImageWrap {
+    width: 100%;
+    height: 496px;
+    border-radius: 60px;
+    margin-top: 0;
+  }
+}
+
+/* desktop 1280px */
+@media (min-width: 1280px) {
+  .hero {
+    margin: 16px 32px;
+    display: block;
+    overflow: hidden;
+  }
+
+  .heroContent {
+    padding: 178px 64px 32px;
+    width: 100%;
+    height: 384px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .title {
+    font-size: 80px;
+    line-height: 0.9625;
+    margin-bottom: 0;
+    max-width: 60%;
+  }
+
+  .desc {
+    padding-left: 0;
+    max-width: 220px;
+    font-size: 14px;
+    flex-shrink: 0;
+    align-self: flex-end;
+    margin-bottom: 0;
+  }
+
+  .heroImageWrap {
+    height: 384px;
+    margin-top: 0;
+  }
+}
