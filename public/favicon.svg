@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Paw print icon -->
+  <circle cx="10" cy="8" r="3" fill="#F6B83D"/>
+  <circle cx="22" cy="8" r="3" fill="#F6B83D"/>
+  <circle cx="6" cy="15" r="2.5" fill="#F6B83D"/>
+  <circle cx="26" cy="15" r="2.5" fill="#F6B83D"/>
+  <path d="M16 12 C10 12 7 17 7 21 C7 25 10 27 16 27 C22 27 25 25 25 21 C25 17 22 12 16 12Z" fill="#F6B83D"/>
+</svg>

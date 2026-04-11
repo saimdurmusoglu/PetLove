@@ -17,6 +17,9 @@
   --color-button: #F6B83D;
   --color-button-hover: #f9b020;
   --color-button-hover-2: #fbe7c1;
+  --color-background: #f9f9f9;
+  --color-close: #a32d2d;
+  --color-close-background: #fde8e8;
 
   --font-main: 'Manrope', sans-serif;
 
@@ -44,6 +47,14 @@ button {
   border: none;
   background: none;
   font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus,
+button:focus-visible,
+a:focus,
+a:focus-visible {
+  outline: none;
 }
 
 img {
@@ -53,4 +64,25 @@ img {
 
 ul {
   list-style: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+    padding: 0 64px;
+  }
 }

@@ -1,10 +1,12 @@
 import {useState} from "react";
 import {NavLink, Link, useLocation} from "react-router-dom";
-import {useAppSelector} from "../../hooks/redux";
+import {useAppSelector, useAppDispatch} from "../../hooks/redux";
+import {logout} from "../../redux/slices/authSlice";
 import styles from "./Header.module.css";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const dispatch = useAppDispatch();
   const {isLoggedIn, user} = useAppSelector((state) => state.auth);
   const {pathname} = useLocation();
   const isHome = pathname === "/";
@@ -15,10 +17,10 @@ const Header = () => {
   const getNavClass = (isActive: boolean) => {
     if (isLoggedIn) {
       return isActive
-        ? `${styles.navLinkLight} ${styles.active}`
-        : styles.navLinkLight;
+        ? `${styles.navLink} ${styles.active}`
+        : styles.navLink;
     }
-    return isActive ? `${styles.navLink} ${styles.active}` : styles.navLink;
+    return isActive ? `${styles.navLinkLight} ${styles.active}` : styles.navLinkLight;
   };
 
   const getDesktopNavClass = (isActive: boolean) => {
@@ -86,7 +88,7 @@ const Header = () => {
           {/* tablet: login olmuş + home değil */}
           {isLoggedIn && !isHome && (
             <div className={`${styles.authButtons} ${styles.tabletOnly}`}>
-              <button className={styles.logoutBtnHeader}>Log out</button>
+              <button className={styles.logoutBtnHeader} onClick={() => dispatch(logout())}>Log out</button>
             </div>
           )}
 
@@ -110,24 +112,19 @@ const Header = () => {
             </Link>
           )}
 
-          {/* home'da user ikonu - mobile + tablet */}
-          {isHome && (
-            <Link
-              to="/profile"
-              className={`${styles.userIconLink} ${styles.mobileTabletOnly}`}
-            >
+          {/* mobile + tablet: login olmuş user ikonu */}
+          {isLoggedIn && (
+            <Link to="/profile" className={styles.mobileUserBtn}>
               {user?.avatar ? (
                 <img
                   src={user.avatar}
                   alt="avatar"
-                  className={styles.avatarSmall}
+                  className={styles.mobileUserAvatar}
                 />
               ) : (
-                <div className={styles.userIconBtn}>
-                  <svg width={20} height={20} className={styles.userIcon}>
-                    <use href="/sprite/sprite.svg#icon-user" />
-                  </svg>
-                </div>
+                <svg width={18} height={18} className={styles.mobileUserIcon}>
+                  <use href="/sprite/sprite.svg#icon-user" />
+                </svg>
               )}
             </Link>
           )}
@@ -150,7 +147,7 @@ const Header = () => {
       {isMenuOpen && (
         <div className={styles.overlay} onClick={closeMenu}>
           <div
-            className={`${styles.menu} ${isLoggedIn ? styles.menuLoggedIn : ""}`}
+            className={`${styles.menu} ${!isLoggedIn ? styles.menuLoggedOut : ""}`}
             onClick={(e) => e.stopPropagation()}
           >
             <button className={styles.closeBtn} onClick={closeMenu}>
@@ -197,13 +194,15 @@ const Header = () => {
                       className={styles.avatar}
                     />
                   ) : (
-                    <svg width={40} height={40} className={styles.avatar}>
-                      <use href="/sprite/sprite.svg#icon-user" />
-                    </svg>
+                    <div className={styles.userIconBtn}>
+                      <svg width={20} height={20} className={styles.userIcon}>
+                        <use href="/sprite/sprite.svg#icon-user" />
+                      </svg>
+                    </div>
                   )}
                   <span>{user?.name}</span>
                 </Link>
-                <button className={styles.logoutBtn}>Log out</button>
+                <button className={styles.logoutBtn} onClick={() => { dispatch(logout()); closeMenu(); }}>Log out</button>
               </div>
             ) : (
               <div className={styles.authNav}>
