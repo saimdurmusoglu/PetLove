@@ -107,6 +107,22 @@ export const removePet = createAsyncThunk(
   }
 );
 
+export const addPet = createAsyncThunk(
+  'auth/addPet',
+  async (
+    pet: { name: string; title: string; imgURL: string; species: string; birthday: string; sex: string },
+    { rejectWithValue }
+  ) => {
+    try {
+      const { data } = await api.post('/users/current/pets/add', pet);
+      return data;
+    } catch (error) {
+      const e = error as { response?: { data?: { message?: string } } };
+      return rejectWithValue(e.response?.data?.message || 'Failed to add pet');
+    }
+  }
+);
+
 export const signOut = createAsyncThunk(
   'auth/signOut',
   async (_, { rejectWithValue }) => {
@@ -182,6 +198,9 @@ const authSlice = createSlice({
         state.user = action.payload;
       })
       .addCase(removePet.fulfilled, (state, action) => {
+        state.user = action.payload;
+      })
+      .addCase(addPet.fulfilled, (state, action) => {
         state.user = action.payload;
       })
       .addCase(signOut.fulfilled, state => {

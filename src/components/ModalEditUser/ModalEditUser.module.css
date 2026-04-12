@@ -71,7 +71,7 @@
   border: 1.5px solid rgba(38, 38, 38, 0.15);
   padding: 0 16px;
   font-size: 14px;
-  font-family: var(--font-main);
+
   color: var(--color-text);
   outline: none;
   transition: border-color var(--transition);
@@ -111,7 +111,7 @@
   font-weight: 700;
   border: none;
   cursor: pointer;
-  font-family: var(--font-main);
+
   margin-top: 8px;
   transition: background var(--transition);
 }

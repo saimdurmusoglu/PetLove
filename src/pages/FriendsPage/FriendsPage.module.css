@@ -1,6 +1,6 @@
 .content {
   width: 100%;
-  padding: 114px 0 24px;
+  padding: 114px 20px 24px;
   background-color: var(--color-background);
 }
 
@@ -15,8 +15,8 @@
 
 .card {
   background: var(--color-white);
-  width: 335px;
-  height: 184px;
+  width: 100%;
+  min-height: 184px;
   border-radius: 15px;
   padding: 40px 25px 40px 20px;
   margin-bottom: 20px;

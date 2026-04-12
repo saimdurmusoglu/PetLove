@@ -1,25 +1,26 @@
 .card {
   background: var(--color-white);
-  border-radius: 20px;
-  overflow: hidden;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
-  padding: 12px;
+  padding: 32px;
+  width: 100%;
+  overflow: hidden;
 }
 
 .cardImgWrap {
   position: relative;
-  border-radius: 15px;
+  border-radius: 16px;
   overflow: hidden;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
 }
 
 .cardImg {
   width: 100%;
-  height: 200px;
+  height: 178px;
   object-fit: cover;
   display: block;
-  border-radius: 15px;
+  border-radius: 16px;
 }
 
 .cardBody {
@@ -40,7 +41,8 @@
 .cardTitle {
   font-size: 16px;
   font-weight: 700;
-  letter-spacing: -0.03em;
+  line-height: 20px;
+  letter-spacing: 0;
   color: var(--color-text);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -54,8 +56,10 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0;
   color: var(--color-text);
   flex-shrink: 0;
   white-space: nowrap;
@@ -68,73 +72,86 @@
 
 .cardMeta {
   display: grid;
-  grid-template-columns: repeat(5, auto);
-  justify-content: start;
-  gap: 0 16px;
-  margin-bottom: 10px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px 14px;
+  margin-bottom: 16px;
 }
 
 .metaItem {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  min-width: 0;
 }
 
 .metaLabel {
-  font-size: 11px;
-  font-weight: 400;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: -0.02em;
   color: rgba(38, 38, 38, 0.5);
-  line-height: 1.2;
 }
 
 .metaValue {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: -0.02em;
   color: var(--color-text);
-  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .cardComment {
   font-size: 14px;
-  color: rgba(38, 38, 38, 0.7);
-  line-height: 1.4;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  color: var(--color-text-secondary);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 
 .cardPrice {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--color-text);
+  line-height: 20px;
+  letter-spacing: 0;
+  color: var(--color-text-secondary);
+  text-align: left;
   margin-bottom: 12px;
 }
 
 .cardActions {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   align-items: center;
   margin-top: auto;
 }
 
 .learnMoreBtn {
   flex: 1;
-  height: 40px;
+  width: 231px;
+  height: 46px;
+  padding: 14px 70px;
   border-radius: 30px;
   background: var(--color-primary);
   color: var(--color-white);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
   border: none;
   cursor: pointer;
-  font-family: var(--font-main);
   transition: background var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .learnMoreBtn:hover {
@@ -142,27 +159,26 @@
 }
 
 .heartBtn {
-  width: 40px;
-  height: 40px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   flex-shrink: 0;
-  border: 1px solid rgba(38, 38, 38, 0.15);
+  border: none;
   background: var(--color-primary-light);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(38, 38, 38, 0.4);
+  color: var(--color-primary);
   transition: all var(--transition);
 }
 
 .heartBtn:hover {
-  border-color: var(--color-primary);
+  background: var(--color-button-hover-2);
 }
 
 .heartActive {
   color: var(--color-primary);
-  border-color: var(--color-primary);
 }
 
 .deleteBtn {

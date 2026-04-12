@@ -18,41 +18,41 @@ const ModalAttention = ({ onClose }: ModalAttentionProps) => {
   }, [onClose]);
 
   const handleLogin = () => {
-    onClose();
     navigate('/login');
+    onClose();
   };
 
   const handleRegister = () => {
-    onClose();
     navigate('/register');
+    onClose();
   };
 
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={e => e.stopPropagation()}>
         <button className={styles.closeBtn} onClick={onClose} aria-label="Close">
-          <svg width={16} height={16}>
-            <use href="/sprite/sprite.svg#icon-cross" />
+          <svg width={14} height={14}>
+            <use href="/sprite/sprite.svg#icon-cross-small" />
           </svg>
         </button>
 
-        <svg width={48} height={48} className={styles.icon}>
-          <use href="/sprite/sprite.svg#icon-heart" />
-        </svg>
+        <div className={styles.iconWrap}>
+          <span className={styles.emoji}>🐶</span>
+        </div>
 
         <h2 className={styles.title}>Attention</h2>
         <p className={styles.text}>
-          We would like to note that certain functionality is available only to
-          authorized users. If you want to get the most out of our site, please
-          register or log in.
+          We would like to remind you that certain functionality is available only to
+          authorized users. If you have an account, please log in with your credentials.
+          If you do not already have an account, you must register to access these features.
         </p>
 
         <div className={styles.buttons}>
           <button className={styles.loginBtn} onClick={handleLogin}>
-            Login
+            Log In
           </button>
           <button className={styles.registerBtn} onClick={handleRegister}>
-            Register
+            Registration
           </button>
         </div>
       </div>

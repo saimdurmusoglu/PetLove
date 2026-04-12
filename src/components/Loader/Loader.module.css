@@ -48,7 +48,7 @@
   justify-content: center;
   font-size: 38px;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-white);
   letter-spacing: -0.02em;
   transition: opacity 0.35s ease;
 }

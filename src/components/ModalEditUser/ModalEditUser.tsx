@@ -7,13 +7,6 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { updateUser, selectUser } from '../../redux/slices/authSlice';
 import css from './ModalEditUser.module.css';
 
-interface FormData {
-  name: string;
-  email: string;
-  phone?: string;
-  avatar?: string;
-}
-
 const schema = yup.object({
   name: yup.string().required('Name is required'),
   email: yup
@@ -22,14 +15,12 @@ const schema = yup.object({
     .matches(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/, 'Invalid email'),
   avatar: yup
     .string()
-    .matches(/^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/i, 'Invalid image URL')
-    .optional()
-    .transform(v => v || undefined),
+    .matches(/^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp))?$/i, 'Invalid image URL')
+    .optional(),
   phone: yup
     .string()
-    .matches(/^\+38\d{10}$/, 'Format: +38XXXXXXXXXX')
-    .optional()
-    .transform(v => v || undefined),
+    .matches(/^(\+38\d{10})?$/, 'Format: +38XXXXXXXXXX')
+    .optional(),
 });
 
 interface Props {
@@ -39,6 +30,8 @@ interface Props {
 export default function ModalEditUser({ onClose }: Props) {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectUser);
+
+  type FormData = yup.InferType<typeof schema>;
 
   const {
     register,
@@ -67,7 +60,12 @@ export default function ModalEditUser({ onClose }: Props) {
 
   const onSubmit = async (data: FormData) => {
     try {
-      await dispatch(updateUser(data)).unwrap();
+      const payload = {
+        ...data,
+        avatar: data.avatar || undefined,
+        phone: data.phone || undefined,
+      };
+      await dispatch(updateUser(payload)).unwrap();
       onClose();
     } catch (error) {
       toast.error(typeof error === 'string' ? error : 'Update failed');

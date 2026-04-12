@@ -17,6 +17,7 @@ import NewPage from './pages/NewPage/NewPage';
 import FriendsPage from './pages/FriendsPage/FriendsPage';
 import NoticesPage from './pages/NoticesPage/NoticesPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
+import AddPetPage from './pages/AddPetPage/AddPetPage';
 import Loader from './components/Loader/Loader';
 
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
@@ -66,7 +67,7 @@ const App = () => {
           path="/add-pet"
           element={
             <PrivateRoute>
-              <div>Add Pet</div>
+              <AddPetPage />
             </PrivateRoute>
           }
         />

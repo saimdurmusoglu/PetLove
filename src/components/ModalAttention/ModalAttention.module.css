@@ -12,64 +12,88 @@
   position: relative;
   background: var(--color-white);
   border-radius: 30px;
-  padding: 32px 20px 28px;
+  padding: 40px 20px;
   width: calc(100% - 40px);
   max-width: 335px;
+  min-height: 394px;
+  text-align: center;
 }
 
 .closeBtn {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 28px;
-  height: 28px;
+  top: 20px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: var(--color-close-background);
-  color: var(--color-close);
+  background: transparent;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--color-text);
 }
 
-.icon {
-  display: block;
-  margin: 0 auto 12px;
-  color: var(--color-primary);
+.closeBtn svg {
+  color: var(--color-text);
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.iconWrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.emoji {
+  font-size: 44px;
+  line-height: 1;
 }
 
 .title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
-  text-align: center;
-  color: var(--color-text);
-  margin-bottom: 8px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-primary);
+  margin-bottom: 20px;
 }
 
 .text {
   font-size: 14px;
-  line-height: 1.5;
-  text-align: center;
-  color: rgba(38, 38, 38, 0.6);
+  font-weight: 500;
+  line-height: 1.286;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
   margin-bottom: 24px;
 }
 
 .buttons {
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 
 .loginBtn {
   flex: 1;
-  height: 42px;
+  width: 135px;
+  height: 44px;
   border-radius: 30px;
   background: var(--color-primary);
   color: var(--color-white);
-  border: none;
+  padding: 12px;
   font-size: 14px;
   font-weight: 700;
-  font-family: var(--font-main);
+  line-height: 1.286;
+  letter-spacing: -0.03em;
+  border: none;
   cursor: pointer;
   transition: background var(--transition);
 }
@@ -80,13 +104,21 @@
 
 .registerBtn {
   flex: 1;
-  height: 42px;
+  width: 129px;
+  height: 44px;
   border-radius: 30px;
-  background: var(--color-white);
-  border: 1px solid rgba(38, 38, 38, 0.15);
-  color: var(--color-text);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  padding: 12px;
   font-size: 14px;
   font-weight: 700;
-  font-family: var(--font-main);
+  line-height: 1.286;
+  letter-spacing: -0.03em;
+  border: none;
   cursor: pointer;
+  transition: background var(--transition);
+}
+
+.registerBtn:hover {
+  background: var(--color-button-hover-2);
 }

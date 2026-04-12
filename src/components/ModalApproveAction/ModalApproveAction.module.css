@@ -68,7 +68,6 @@
   font-weight: 700;
   border: none;
   cursor: pointer;
-  font-family: var(--font-main);
 }
 
 .cancelBtn {
@@ -81,5 +80,4 @@
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
-  font-family: var(--font-main);
 }

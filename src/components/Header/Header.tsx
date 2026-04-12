@@ -122,7 +122,7 @@ const Header = () => {
                   className={styles.mobileUserAvatar}
                 />
               ) : (
-                <svg width={18} height={18} className={styles.mobileUserIcon}>
+                <svg width={20} height={20} className={styles.mobileUserIcon}>
                   <use href="/sprite/sprite.svg#icon-user" />
                 </svg>
               )}

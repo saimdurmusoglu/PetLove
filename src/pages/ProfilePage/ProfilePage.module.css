@@ -50,7 +50,7 @@
   padding: 6px 12px;
   font-size: 12px;
   font-weight: 700;
-  font-family: var(--font-main);
+
 }
 
 .editBtn {
@@ -133,9 +133,8 @@
   border: 1px solid rgba(38, 38, 38, 0.15);
   padding: 0 16px;
   font-size: 14px;
-  background: white;
+  background: var(--color-white);
   color: var(--color-text);
-  font-family: var(--font-main);
   outline: none;
   cursor: default;
 }
@@ -168,7 +167,7 @@
   font-size: 12px;
   font-weight: 700;
   text-decoration: none;
-  font-family: var(--font-main);
+
   transition: background var(--transition);
 }
 
@@ -179,7 +178,7 @@
 .petsList {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 14px;
   padding: 0;
   list-style: none;
 }
@@ -188,8 +187,9 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  background: white;
-  border-radius: 15px;
+  background: var(--color-white);
+  border-radius: 30px;
+  border: 1px solid rgba(38, 38, 38, 0.1);
   padding: 12px;
 }
 
@@ -280,7 +280,7 @@
   padding: 0 28px;
   margin-top: 16px;
   cursor: pointer;
-  font-family: var(--font-main);
+
   text-transform: uppercase;
   transition: opacity var(--transition);
 }
@@ -310,7 +310,7 @@
   color: rgba(38, 38, 38, 0.5);
   border-bottom: 2px solid transparent;
   margin-right: 16px;
-  font-family: var(--font-main);
+
   transition: all var(--transition);
 }
 

@@ -50,7 +50,7 @@ export default function NoticeCard({
         <div className={css.titleRow}>
           <h3 className={css.cardTitle}>{notice.title}</h3>
           <div className={css.popularityBadge}>
-            <svg width={14} height={14} className={css.starIcon}>
+            <svg width={16} height={16} className={css.starIcon}>
               <use href="/sprite/sprite.svg#icon-star" />
             </svg>
             <span>{notice.popularity}</span>
@@ -104,7 +104,7 @@ export default function NoticeCard({
               onClick={onToggleFavorite}
               aria-label="Toggle favorite"
             >
-              <svg width={20} height={20}>
+              <svg width={18} height={18}>
                 <use href="/sprite/sprite.svg#icon-heart" />
               </svg>
             </button>

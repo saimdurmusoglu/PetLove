@@ -10,6 +10,7 @@
   --color-primary: #F6B83D;
   --color-primary-light: #FFF4DF;
   --color-text: #262626;
+  --color-text-secondary: #2b2b2a;
   --color-white: #FFFFFF;
   --color-error: #EF2447;
   --color-success: #3CBC81;
@@ -17,9 +18,27 @@
   --color-button: #F6B83D;
   --color-button-hover: #f9b020;
   --color-button-hover-2: #fbe7c1;
+  --color-btn-secondary: rgba(38, 38, 38, 0.05);
+  --color-btn-secondary-hover: rgba(38, 38, 38, 0.1);
+  --color-text-80: rgba(38, 38, 38, 0.8);
+  --color-text-50: rgba(38, 38, 38, 0.5);
+  --color-text-40: rgba(38, 38, 38, 0.4);
+  --color-border-input: rgba(38, 38, 38, 0.15);
+  --color-border-dropdown: rgba(38, 38, 38, 0.1);
+  --color-scrollbar: rgba(38, 38, 38, 0.08);
+  --color-primary-light-hover: #fde9b8;
+  --color-primary-hover-bg: rgba(246, 184, 61, 0.08);
   --color-background: #f9f9f9;
   --color-close: #a32d2d;
   --color-close-background: #fde8e8;
+  --color-female: #F43F5E;
+  --color-female-light: #FFF0F6;
+  --color-female-border: #FF8DC8;
+  --color-female-icon: #FF4081;
+  --color-male: #54ADFF;
+  --color-male-light: #EBF4FF;
+  --color-unknown: #F6B83D;
+  --color-unknown-light: #FFF4DF;
 
   --font-main: 'Manrope', sans-serif;
 
@@ -30,11 +49,16 @@
   --transition: 250ms ease;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: var(--font-main);
   color: var(--color-text);
   background-color: var(--color-white);
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 a {
@@ -68,14 +92,13 @@ ul {
 
 .container {
   width: 100%;
-  max-width: 375px;
-  margin: 0 auto;
   padding: 0 20px;
 }
 
 @media (min-width: 768px) {
   .container {
     max-width: 768px;
+    margin: 0 auto;
     padding: 0 32px;
   }
 }

@@ -65,7 +65,11 @@ export const toggleFavorite = createAsyncThunk(
         await addToFavorites(id);
       }
       return { id, isFavorite };
-    } catch {
+    } catch (error: unknown) {
+      const status = (error as { response?: { status?: number } })?.response?.status;
+      if (!isFavorite && status === 409) {
+        return { id, isFavorite: false };
+      }
       return rejectWithValue('Failed to update favorites');
     }
   }

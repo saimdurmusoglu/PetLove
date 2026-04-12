@@ -60,7 +60,6 @@ function buildParams(
   return params;
 }
 
-
 export default function NoticesPage() {
   const dispatch = useAppDispatch();
 
@@ -77,10 +76,14 @@ export default function NoticesPage() {
 
   const [searchInput, setSearchInput] = useState("");
   const [locationInput, setLocationInput] = useState("");
-  const [locationSuggestions, setLocationSuggestions] = useState<{_id: string, cityEn: string, stateEn: string}[]>([]);
+  const [locationSuggestions, setLocationSuggestions] = useState<
+    {_id: string; cityEn: string; stateEn: string}[]
+  >([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [showAttention, setShowAttention] = useState(false);
-  const [selectedNotice, setSelectedNotice] = useState<NoticeDetail | null>(null);
+  const [selectedNotice, setSelectedNotice] = useState<NoticeDetail | null>(
+    null,
+  );
 
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isSexOpen, setIsSexOpen] = useState(false);
@@ -89,6 +92,7 @@ export default function NoticesPage() {
   const categoryRef = useRef<HTMLDivElement>(null);
   const sexRef = useRef<HTMLDivElement>(null);
   const speciesRef = useRef<HTMLDivElement>(null);
+  const skipLocationSearchRef = useRef(false);
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -102,13 +106,19 @@ export default function NoticesPage() {
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (categoryRef.current && !categoryRef.current.contains(e.target as Node)) {
+      if (
+        categoryRef.current &&
+        !categoryRef.current.contains(e.target as Node)
+      ) {
         setIsCategoryOpen(false);
       }
       if (sexRef.current && !sexRef.current.contains(e.target as Node)) {
         setIsSexOpen(false);
       }
-      if (speciesRef.current && !speciesRef.current.contains(e.target as Node)) {
+      if (
+        speciesRef.current &&
+        !speciesRef.current.contains(e.target as Node)
+      ) {
         setIsSpeciesOpen(false);
       }
     };
@@ -117,11 +127,11 @@ export default function NoticesPage() {
   }, []);
 
   useEffect(() => {
-    if (locationInput.length < 3) {
-      setLocationSuggestions([]);
-      setShowSuggestions(false);
+    if (skipLocationSearchRef.current) {
+      skipLocationSearchRef.current = false;
       return;
     }
+    if (locationInput.length < 3) return;
     const timer = setTimeout(async () => {
       try {
         const results = await searchCities(locationInput);
@@ -136,8 +146,8 @@ export default function NoticesPage() {
 
   useEffect(() => {
     const handleClickOutside = () => setShowSuggestions(false);
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
   const handleSearch = (e: React.FormEvent) => {
@@ -150,16 +160,21 @@ export default function NoticesPage() {
     dispatch(setFilter({key: "keyword", value: ""}));
   };
 
-  const handleLocationSelect = (city: {_id: string, cityEn: string, stateEn: string}) => {
+  const handleLocationSelect = (city: {
+    _id: string;
+    cityEn: string;
+    stateEn: string;
+  }) => {
+    skipLocationSearchRef.current = true;
     setLocationInput(`${city.cityEn}, ${city.stateEn}`);
     setShowSuggestions(false);
     dispatch(setFilter({key: "location", value: city._id}));
   };
 
   const handleLocationClear = () => {
-    setLocationInput('');
+    setLocationInput("");
     setShowSuggestions(false);
-    dispatch(setFilter({key: "location", value: ''}));
+    dispatch(setFilter({key: "location", value: ""}));
   };
 
   const handleSortPill = (value: string) => {
@@ -244,7 +259,9 @@ export default function NoticesPage() {
                 <svg
                   width={16}
                   height={16}
-                  className={isCategoryOpen ? styles.chevronOpen : styles.chevron}
+                  className={
+                    isCategoryOpen ? styles.chevronOpen : styles.chevron
+                  }
                 >
                   <use href="/sprite/sprite.svg#icon-chevron-down" />
                 </svg>
@@ -259,11 +276,16 @@ export default function NoticesPage() {
                         opt === "Show all"
                           ? styles.dropdownItemShowAll
                           : filters.category === opt
-                          ? styles.dropdownItemActive
-                          : ""
+                            ? styles.dropdownItemActive
+                            : ""
                       }`}
                       onClick={() => {
-                        dispatch(setFilter({key: "category", value: opt === "Show all" ? "" : opt}));
+                        dispatch(
+                          setFilter({
+                            key: "category",
+                            value: opt === "Show all" ? "" : opt,
+                          }),
+                        );
                         setIsCategoryOpen(false);
                       }}
                     >
@@ -300,11 +322,16 @@ export default function NoticesPage() {
                         opt === "Show all"
                           ? styles.dropdownItemShowAll
                           : filters.sex === opt
-                          ? styles.dropdownItemActive
-                          : ""
+                            ? styles.dropdownItemActive
+                            : ""
                       }`}
                       onClick={() => {
-                        dispatch(setFilter({key: "sex", value: opt === "Show all" ? "" : opt}));
+                        dispatch(
+                          setFilter({
+                            key: "sex",
+                            value: opt === "Show all" ? "" : opt,
+                          }),
+                        );
                         setIsSexOpen(false);
                       }}
                     >
@@ -342,11 +369,16 @@ export default function NoticesPage() {
                       opt === "Show all"
                         ? styles.dropdownItemShowAll
                         : filters.species === opt
-                        ? styles.dropdownItemActive
-                        : ""
+                          ? styles.dropdownItemActive
+                          : ""
                     }`}
                     onClick={() => {
-                      dispatch(setFilter({key: "species", value: opt === "Show all" ? "" : opt}));
+                      dispatch(
+                        setFilter({
+                          key: "species",
+                          value: opt === "Show all" ? "" : opt,
+                        }),
+                      );
                       setIsSpeciesOpen(false);
                     }}
                   >
@@ -357,27 +389,45 @@ export default function NoticesPage() {
             )}
           </div>
 
-          <div className={styles.searchRow} onClick={e => e.stopPropagation()}>
+          <div
+            className={styles.searchRow}
+            onClick={(e) => e.stopPropagation()}
+          >
             <input
               className={styles.searchInput}
               placeholder="Location"
               value={locationInput}
-              onChange={e => setLocationInput(e.target.value)}
-              onFocus={() => locationSuggestions.length > 0 && setShowSuggestions(true)}
+              onChange={(e) => {
+                const val = e.target.value;
+                setLocationInput(val);
+                if (val.length < 3) {
+                  setLocationSuggestions([]);
+                  setShowSuggestions(false);
+                }
+              }}
+              onFocus={() =>
+                locationSuggestions.length > 0 && setShowSuggestions(true)
+              }
             />
             {locationInput && (
               <button className={styles.clearBtn} onClick={handleLocationClear}>
-                <svg width={16} height={16}><use href="/sprite/sprite.svg#icon-cross-small" /></svg>
+                <svg width={16} height={16}>
+                  <use href="/sprite/sprite.svg#icon-cross-small" />
+                </svg>
               </button>
             )}
             <button className={styles.searchIconBtn}>
-              <svg width={18} height={18}><use href="/sprite/sprite.svg#icon-search" /></svg>
+              <svg width={18} height={18}>
+                <use href="/sprite/sprite.svg#icon-search" />
+              </svg>
             </button>
             {showSuggestions && locationSuggestions.length > 0 && (
               <div className={styles.suggestionMenu}>
-                {locationSuggestions.map(city => {
+                {locationSuggestions.map((city) => {
                   const label = `${city.cityEn}, ${city.stateEn}`;
-                  const idx = label.toLowerCase().indexOf(locationInput.toLowerCase());
+                  const idx = label
+                    .toLowerCase()
+                    .indexOf(locationInput.toLowerCase());
                   return (
                     <button
                       key={city._id}
@@ -386,10 +436,14 @@ export default function NoticesPage() {
                     >
                       {idx >= 0 ? (
                         <>
-                          <strong>{label.slice(0, idx + locationInput.length)}</strong>
+                          <strong>
+                            {label.slice(0, idx + locationInput.length)}
+                          </strong>
                           {label.slice(idx + locationInput.length)}
                         </>
-                      ) : label}
+                      ) : (
+                        label
+                      )}
                     </button>
                   );
                 })}
@@ -525,7 +579,9 @@ export default function NoticesPage() {
             <div className={styles.paginationGroup}>
               <button
                 className={styles.pageBtn}
-                onClick={() => dispatch(setPage(Math.min(totalPages, page + 1)))}
+                onClick={() =>
+                  dispatch(setPage(Math.min(totalPages, page + 1)))
+                }
                 disabled={page === totalPages}
               >
                 <svg width={20} height={20}>
