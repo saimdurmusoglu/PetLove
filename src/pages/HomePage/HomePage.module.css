@@ -55,35 +55,51 @@
 
 /* tablet 768px */
 @media (min-width: 768px) {
+  .main {
+    background-color: var(--color-background);
+  }
+
   .hero {
     margin: 16px 32px;
     overflow: hidden;
-    display: block;
+    border-radius: 0 0 60px 60px;
   }
 
   .heroContent {
-    border-radius: 60px;
-    padding: 178px 32px 44px;
-    width: 100%;
     height: 496px;
+    border-radius: 60px;
+    padding: 178px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-primary);
   }
 
   .title {
     font-size: 80px;
-    line-height: 0.9625;
-    margin-bottom: 32px;
+    font-weight: 700;
+    line-height: 77px;
+    letter-spacing: -0.03em;
+    margin-bottom: 0;
+    max-width: 100%;
   }
 
   .desc {
     font-size: 18px;
-    line-height: 1.223;
-    padding-left: 385px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.02em;
+    margin-top: 32px;
+    margin-left: auto;
+    width: 255px;
+    height: 88px;
+    overflow: hidden;
+    padding-left: 0;
   }
 
   .heroImageWrap {
     width: 100%;
     height: 496px;
-    border-radius: 60px;
+    border-radius: 60px 60px 0 0;
     margin-top: 0;
   }
 }

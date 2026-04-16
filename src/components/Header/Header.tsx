@@ -151,8 +151,8 @@ const Header = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <button className={styles.closeBtn} onClick={closeMenu}>
-              <svg width={32} height={32}>
-                <use href="/sprite/sprite.svg#icon-cross-small" />
+              <svg width={24} height={24} viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
               </svg>
             </button>
 

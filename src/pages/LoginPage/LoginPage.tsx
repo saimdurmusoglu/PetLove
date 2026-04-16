@@ -1,12 +1,16 @@
-import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { loginUser, selectAuthError, selectAuthLoading } from '../../redux/slices/authSlice';
-import styles from './LoginPage.module.css';
+import {useEffect, useState} from "react";
+import {useForm} from "react-hook-form";
+import {yupResolver} from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import {Link, useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {
+  loginUser,
+  selectAuthError,
+  selectAuthLoading,
+} from "../../redux/slices/authSlice";
+import styles from "./LoginPage.module.css";
 
 interface LoginFormData {
   email: string;
@@ -16,15 +20,15 @@ interface LoginFormData {
 const schema = yup.object({
   email: yup
     .string()
-    .required('Email is required')
+    .required("Email is required")
     .matches(
       /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
-      'Enter a valid Email'
+      "Enter a valid Email",
     ),
   password: yup
     .string()
-    .required('Password is required')
-    .min(7, 'Password must be at least 7 characters'),
+    .required("Password is required")
+    .min(7, "Password must be at least 7 characters"),
 });
 
 const LoginPage = () => {
@@ -37,10 +41,10 @@ const LoginPage = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, touchedFields },
+    formState: {errors, touchedFields},
   } = useForm<LoginFormData>({
     resolver: yupResolver(schema),
-    mode: 'onTouched',
+    mode: "onTouched",
   });
 
   useEffect(() => {
@@ -52,7 +56,7 @@ const LoginPage = () => {
   const onSubmit = async (data: LoginFormData) => {
     const result = await dispatch(loginUser(data));
     if (loginUser.fulfilled.match(result)) {
-      navigate('/profile');
+      navigate("/profile");
     }
   };
 
@@ -71,6 +75,23 @@ const LoginPage = () => {
           alt="dog"
           className={styles.pet}
         />
+        <div className={styles.informCard}>
+          <div className={styles.avatar}>
+            <img
+              src="/images/dog@1x.png"
+              srcSet="/images/dog@2x.png 2x"
+              alt=""
+              className={styles.avatarImg}
+            /> 
+          </div>
+          <div className={styles.content}>
+            <div className={styles.row}>
+              <h3 className={styles.informTitle}>Rich</h3>
+              <p className={styles.birthday}>Birthday: <span>21.09.2020</span></p>
+            </div>
+            <p className={styles.informSubtitle}>Rich would be the perfect addition to an active family that loves to play and go on walks. I bet he would love having a doggy playmate too!</p>
+          </div>
+        </div>
       </div>
 
       <div className={styles.formBlock}>
@@ -82,10 +103,10 @@ const LoginPage = () => {
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.fieldWrap}>
             <input
-              {...register('email')}
+              {...register("email")}
               type="email"
               placeholder="Email"
-              className={`${styles.input} ${errors.email ? styles.inputError : ''} ${!errors.email && touchedFields.email ? styles.inputSuccess : ''}`}
+              className={`${styles.input} ${errors.email ? styles.inputError : ""} ${!errors.email && touchedFields.email ? styles.inputSuccess : ""}`}
             />
             {errors.email && (
               <>
@@ -104,10 +125,10 @@ const LoginPage = () => {
 
           <div className={styles.fieldWrap}>
             <input
-              {...register('password')}
-              type={showPassword ? 'text' : 'password'}
+              {...register("password")}
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
-              className={`${styles.input} ${errors.password ? styles.inputError : ''} ${!errors.password && touchedFields.password ? styles.inputSuccess : ''}`}
+              className={`${styles.input} ${errors.password ? styles.inputError : ""} ${!errors.password && touchedFields.password ? styles.inputSuccess : ""}`}
             />
             {!errors.password && touchedFields.password && (
               <svg width={18} height={18} className={styles.iconSuccess}>
@@ -117,23 +138,29 @@ const LoginPage = () => {
             <svg
               width={18}
               height={18}
-              className={`${styles.iconEye} ${errors.password ? styles.iconEyeShifted : ''}`}
-              onClick={() => setShowPassword(prev => !prev)}
+              className={`${styles.iconEye} ${errors.password ? styles.iconEyeShifted : ""}`}
+              onClick={() => setShowPassword((prev) => !prev)}
             >
-              <use href={`/sprite/sprite.svg#${showPassword ? 'icon-eye' : 'icon-eye-off'}`} />
+              <use
+                href={`/sprite/sprite.svg#${showPassword ? "icon-eye" : "icon-eye-off"}`}
+              />
             </svg>
             {errors.password && (
               <span className={styles.errorMsg}>{errors.password.message}</span>
             )}
           </div>
 
-          <button type="submit" className={styles.submitBtn} disabled={isLoading}>
-            {isLoading ? 'Logging in...' : 'Log In'}
+          <button
+            type="submit"
+            className={styles.submitBtn}
+            disabled={isLoading}
+          >
+            {isLoading ? "Logging in..." : "Log In"}
           </button>
         </form>
 
         <p className={styles.switchText}>
-          Don't have an account?{' '}
+          Don't have an account?{" "}
           <Link to="/register" className={styles.switchLink}>
             Register
           </Link>

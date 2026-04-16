@@ -1,4 +1,5 @@
 import {useEffect, useRef, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {
@@ -62,6 +63,7 @@ function buildParams(
 
 export default function NoticesPage() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const items = useAppSelector(selectNotices);
   const totalPages = useAppSelector(selectTotalPages);
@@ -204,6 +206,11 @@ export default function NoticesPage() {
     const isFav = favoriteIds.includes(notice._id);
     dispatch(toggleFavorite({id: notice._id, isFavorite: isFav}))
       .unwrap()
+      .then(() => {
+        if (!isFav) {
+          navigate('/profile', { state: { showCongrats: true } });
+        }
+      })
       .catch(() => toast.error("Failed to update favorites"));
   };
 

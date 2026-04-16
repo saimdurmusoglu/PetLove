@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import {
@@ -8,9 +8,12 @@ import {
   selectUser,
   selectIsLoggedIn,
 } from '../../redux/slices/authSlice';
-import { removeFromFavorites } from '../../services/noticesService';
+import { removeFromFavorites, getNoticeById, addToFavorites } from '../../services/noticesService';
 import type { NoticeCardItem } from '../../components/NoticeCard/NoticeCard';
+import type { NoticeDetail } from '../../types/notices';
 import NoticeCard from '../../components/NoticeCard/NoticeCard';
+import ModalNotice from '../../components/ModalNotice/ModalNotice';
+import ModalCongrats from '../../components/ModalCongrats/ModalCongrats';
 import ModalApproveAction from '../../components/ModalApproveAction/ModalApproveAction';
 import ModalEditUser from '../../components/ModalEditUser/ModalEditUser';
 import css from './ProfilePage.module.css';
@@ -22,9 +25,19 @@ export default function ProfilePage() {
   const user = useAppSelector(selectUser);
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
 
+  const location = useLocation();
   const [showLogout, setShowLogout] = useState(false);
   const [showEditUser, setShowEditUser] = useState(false);
+  const [showCongrats, setShowCongrats] = useState(false);
   const [activeTab, setActiveTab] = useState<Tab>('favorites');
+  const [selectedNotice, setSelectedNotice] = useState<NoticeDetail | null>(null);
+
+  useEffect(() => {
+    if (location.state?.showCongrats) {
+      setShowCongrats(true);
+      window.history.replaceState({}, document.title);
+    }
+  }, []);
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
@@ -44,6 +57,29 @@ export default function ProfilePage() {
       dispatch(fetchCurrentUser());
     } catch {
       toast.error('Failed to remove from favorites');
+    }
+  };
+
+  const handleLearnMore = async (id: string) => {
+    try {
+      const notice = await getNoticeById(id);
+      setSelectedNotice(notice);
+    } catch {
+      toast.error('Failed to load notice details');
+    }
+  };
+
+  const handleToggleFavorite = async (id: string) => {
+    try {
+      const isFav = favorites.some(n => n._id === id);
+      if (isFav) {
+        await removeFromFavorites(id);
+      } else {
+        await addToFavorites(id);
+      }
+      dispatch(fetchCurrentUser());
+    } catch {
+      toast.error('Failed to update favorites');
     }
   };
 
@@ -77,23 +113,31 @@ export default function ProfilePage() {
           </div>
 
           <div className={css.avatarWrap}>
-            {user.avatar ? (
-              <img src={user.avatar} alt={user.name} className={css.avatarImg} />
-            ) : (
-              <div className={css.avatarCircle}>
-                <svg width={54} height={54} viewBox="0 0 20 20" className={css.avatarIcon}>
-                  <use href="/sprite/sprite.svg#icon-user" />
-                </svg>
-              </div>
-            )}
-            <span className={css.uploadText}>Upload photo</span>
+            <button
+              className={css.avatarBtn}
+              onClick={() => setShowEditUser(true)}
+              aria-label="Upload photo"
+            >
+              {user.avatar ? (
+                <img src={user.avatar} alt={user.name} className={css.avatarImg} />
+              ) : (
+                <div className={css.avatarCircle}>
+                  <svg width={54} height={54} viewBox="0 0 20 20" className={css.avatarIcon}>
+                    <use href="/sprite/sprite.svg#icon-user" />
+                  </svg>
+                </div>
+              )}
+            </button>
+            <button className={css.uploadText} onClick={() => setShowEditUser(true)}>
+              Upload photo
+            </button>
           </div>
 
           <div className={css.infoSection}>
             <h2 className={css.sectionTitle}>My information</h2>
-            <input readOnly value={user?.name || ''} className={css.infoInput} />
-            <input readOnly value={user?.email || ''} className={css.infoInput} />
-            <input readOnly value={user?.phone || ''} placeholder="+380" className={css.infoInput} />
+            <input readOnly value={user?.name || ''} className={`${css.infoInput} ${user?.name ? css.infoInputFilled : ''}`} />
+            <input readOnly value={user?.email || ''} className={`${css.infoInput} ${user?.email ? css.infoInputFilled : ''}`} />
+            <input readOnly value={user?.phone || ''} placeholder="+380" className={`${css.infoInput} ${user?.phone ? css.infoInputFilled : ''}`} />
           </div>
 
           <div className={css.sectionGap} />
@@ -122,22 +166,22 @@ export default function ProfilePage() {
                     </div>
                   )}
                   <div className={css.petInfo}>
-                    <p className={css.petName}>{pet.name}</p>
+                    <p className={css.petName}>{pet.title || pet.name}</p>
                     <div className={css.petMetaRow}>
-                      <div className={css.petMetaCol}>
+                      <div className={`${css.petMetaCol} ${css.petMetaColName}`}>
                         <span className={css.petMetaLabel}>Name</span>
                         <span className={css.petMetaValue}>{pet.name}</span>
                       </div>
-                      <div className={css.petMetaCol}>
+                      <div className={`${css.petMetaCol} ${css.petMetaColBirthday}`}>
                         <span className={css.petMetaLabel}>Birthday</span>
                         <span className={css.petMetaValue}>{pet.birthday}</span>
                       </div>
-                      <div className={css.petMetaCol}>
+                      <div className={`${css.petMetaCol} ${css.petMetaColSex}`}>
                         <span className={css.petMetaLabel}>Sex</span>
                         <span className={css.petMetaValue}>{pet.sex}</span>
                       </div>
                     </div>
-                    <div className={css.petMetaCol}>
+                    <div className={`${css.petMetaCol} ${css.petMetaColSpecies}`}>
                       <span className={css.petMetaLabel}>Species</span>
                       <span className={css.petMetaValue}>{pet.species}</span>
                     </div>
@@ -147,7 +191,7 @@ export default function ProfilePage() {
                     onClick={() => handleRemovePet(pet._id)}
                     aria-label="Remove pet"
                   >
-                    <svg width={20} height={20}>
+                    <svg width={16} height={16} style={{ flexShrink: 0, display: 'block' }}>
                       <use href="/sprite/sprite.svg#icon-trash" />
                     </svg>
                   </button>
@@ -190,8 +234,11 @@ export default function ProfilePage() {
                     notice={notice}
                     showDelete={activeTab === 'favorites'}
                     onDelete={() => handleRemoveFavorite(notice._id)}
-                    isFavorite={true}
+                    onLearnMore={() => handleLearnMore(notice._id)}
+                    isFavorite={favorites.some(f => f._id === notice._id)}
+                    onToggleFavorite={() => handleToggleFavorite(notice._id)}
                     isLoggedIn={isLoggedIn}
+                    hideActions={activeTab === 'viewed'}
                   />
                 </li>
               ))}
@@ -202,6 +249,15 @@ export default function ProfilePage() {
 
       {showLogout && <ModalApproveAction onClose={() => setShowLogout(false)} />}
       {showEditUser && <ModalEditUser onClose={() => setShowEditUser(false)} />}
+      {showCongrats && <ModalCongrats onClose={() => setShowCongrats(false)} />}
+      {selectedNotice && (
+        <ModalNotice
+          notice={selectedNotice}
+          isFavorite={favorites.some(f => f._id === selectedNotice._id)}
+          onClose={() => setSelectedNotice(null)}
+          onToggleFavorite={() => handleToggleFavorite(selectedNotice._id)}
+        />
+      )}
     </main>
   );
 }

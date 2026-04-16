@@ -30,17 +30,21 @@ export default function ModalApproveAction({ onClose }: Props) {
     <div className={css.overlay} onClick={onClose}>
       <div className={css.modal} onClick={e => e.stopPropagation()}>
         <button className={css.closeBtn} onClick={onClose} aria-label="Close">
-          <svg width={16} height={16}>
-            <use href="/sprite/sprite.svg#icon-cross-small" />
+          <svg width={20} height={20} viewBox="0 0 20 20" fill="none">
+            <path d="M15 5L5 15M5 5l10 10" stroke="#262626" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
         </button>
 
-        <svg width={60} height={60} className={css.icon}>
-          <use href="/sprite/sprite.svg#icon-pawprint" />
-        </svg>
+        <div className={css.imageWrap}>
+          <img
+            src="/images/cat@1x.png"
+            srcSet="/images/cat@1x.png 1x, /images/cat@2x.png 2x"
+            alt="Already leaving?"
+            className={css.catImg}
+          />
+        </div>
 
         <h2 className={css.title}>Already leaving?</h2>
-        <p className={css.text}>We hope to see you again soon!</p>
 
         <div className={css.btnRow}>
           <button className={css.yesBtn} onClick={handleYes}>Yes</button>

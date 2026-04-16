@@ -4,8 +4,8 @@ const Loader = () => {
   return (
     <div className={styles.loader}>
       <img
-        src="/images/main-image@1x.png"
-        srcSet="/images/main-image@2x.png 2x"
+        src="/images/main-image-mobile@1x.png"
+        srcSet="/images/main-image-mobile@2x.png 2x"
         alt=""
         className={styles.bg}
       />

@@ -18,6 +18,7 @@ import FriendsPage from './pages/FriendsPage/FriendsPage';
 import NoticesPage from './pages/NoticesPage/NoticesPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import AddPetPage from './pages/AddPetPage/AddPetPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import Loader from './components/Loader/Loader';
 
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
@@ -71,7 +72,7 @@ const App = () => {
             </PrivateRoute>
           }
         />
-        <Route path="*" element={<div>404</div>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <ToastContainer position="top-right" autoClose={3000} />
     </BrowserRouter>

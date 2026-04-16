@@ -16,14 +16,37 @@
   width: calc(100% - 40px);
   max-height: 90vh;
   overflow-y: auto;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .title {
   font-size: 20px;
   font-weight: 700;
-  text-align: center;
   color: var(--color-text);
-  margin-bottom: 20px;
+  margin: 0;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  transition: opacity var(--transition);
+}
+
+.closeBtn:hover {
+  opacity: 0.6;
 }
 
 .avatarWrap {
@@ -47,16 +70,58 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .avatarIcon {
-  color: var(--color-primary);
+  display: block;
+  width: 44px;
+  height: 44px;
+  filter: brightness(0) saturate(100%) invert(73%) sepia(60%) saturate(600%) hue-rotate(1deg) brightness(105%);
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+}
+
+/* URL input + Upload photo butonu yan yana */
+.avatarRow {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.avatarRow .fieldWrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.inputUrl {
+  width: 100%;
+}
+
+.uploadBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff4df;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #262626;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity var(--transition);
+  height: 42px;
+}
+
+.uploadBtn:hover {
+  opacity: 0.8;
 }
 
 .fieldWrap {
@@ -71,11 +136,11 @@
   border: 1.5px solid rgba(38, 38, 38, 0.15);
   padding: 0 16px;
   font-size: 14px;
-
   color: var(--color-text);
   outline: none;
   transition: border-color var(--transition);
   background: var(--color-white);
+  box-sizing: border-box;
 }
 
 .input::placeholder {
@@ -103,7 +168,7 @@
 
 .submitBtn {
   width: 100%;
-  height: 42px;
+  height: 48px;
   border-radius: 30px;
   background: var(--color-primary);
   color: var(--color-white);
@@ -111,7 +176,6 @@
   font-weight: 700;
   border: none;
   cursor: pointer;
-
   margin-top: 8px;
   transition: background var(--transition);
 }

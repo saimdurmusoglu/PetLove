@@ -8,6 +8,7 @@ import {
   addToFavorites,
   removeFromFavorites,
 } from '../../services/noticesService';
+import { fetchCurrentUser } from './authSlice';
 import type { Notice } from '../../types/notices';
 import type { NoticesParams } from '../../services/noticesService';
 
@@ -167,8 +168,16 @@ const noticesSlice = createSlice({
         if (isFavorite) {
           state.favoriteIds = state.favoriteIds.filter(fId => fId !== id);
         } else {
-          state.favoriteIds.push(id);
+          if (!state.favoriteIds.includes(id)) {
+            state.favoriteIds.push(id);
+          }
         }
+      })
+      .addCase(fetchCurrentUser.fulfilled, (state, action) => {
+        const favIds = (action.payload.noticesFavorites || []).map(
+          (n: { _id: string }) => n._id
+        );
+        state.favoriteIds = favIds;
       });
   },
 });

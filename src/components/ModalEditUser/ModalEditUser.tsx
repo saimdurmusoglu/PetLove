@@ -75,14 +75,21 @@ export default function ModalEditUser({ onClose }: Props) {
   return (
     <div className={css.overlay} onClick={onClose}>
       <div className={css.modal} onClick={e => e.stopPropagation()}>
-        <h2 className={css.title}>Edit information</h2>
+        <div className={css.header}>
+          <h2 className={css.title}>Edit information</h2>
+          <button className={css.closeBtn} onClick={onClose} aria-label="Close">
+            <svg width={20} height={20} viewBox="0 0 20 20" fill="none">
+              <path d="M15 5L5 15M5 5l10 10" stroke="#262626" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          </button>
+        </div>
 
         <div className={css.avatarWrap}>
           {avatarValue ? (
             <img src={avatarValue} alt="avatar" className={css.avatarPreview} />
           ) : (
             <div className={css.avatarPlaceholder}>
-              <svg width={40} height={40} className={css.avatarIcon}>
+              <svg className={css.avatarIcon} viewBox="0 0 20 20">
                 <use href="/sprite/sprite.svg#icon-user" />
               </svg>
             </div>
@@ -90,13 +97,21 @@ export default function ModalEditUser({ onClose }: Props) {
         </div>
 
         <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-          <div className={css.fieldWrap}>
-            <input
-              className={`${css.input} ${errors.avatar ? css.inputError : ''}`}
-              placeholder="https://img.example.com/photo.jpg"
-              {...register('avatar')}
-            />
-            {errors.avatar && <span className={css.errorMsg}>{errors.avatar.message}</span>}
+          <div className={css.avatarRow}>
+            <div className={css.fieldWrap}>
+              <input
+                className={`${css.input} ${css.inputUrl} ${errors.avatar ? css.inputError : ''}`}
+                placeholder="https://img.example.com/photo.jpg"
+                {...register('avatar')}
+              />
+              {errors.avatar && <span className={css.errorMsg}>{errors.avatar.message}</span>}
+            </div>
+            <button type="button" className={css.uploadBtn}>
+              Upload photo
+              <svg width={16} height={16}>
+                <use href="/sprite/sprite.svg#icon-upload" />
+              </svg>
+            </button>
           </div>
 
           <div className={css.fieldWrap}>
@@ -126,7 +141,7 @@ export default function ModalEditUser({ onClose }: Props) {
             {errors.phone && <span className={css.errorMsg}>{errors.phone.message}</span>}
           </div>
 
-          <button type="submit" className={css.submitBtn}>Save changes</button>
+          <button type="submit" className={css.submitBtn}>Go to profile</button>
         </form>
       </div>
     </div>

@@ -20,24 +20,40 @@
 
 .closeBtn {
   position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--color-close-background);
-  color: var(--color-close);
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  background: none;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  transition: opacity var(--transition);
 }
 
-.icon {
-  display: block;
-  margin: 0 auto 16px;
-  color: var(--color-primary);
+.closeBtn:hover {
+  opacity: 0.6;
+}
+
+.imageWrap {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #fff4df;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  overflow: hidden;
+}
+
+.catImg {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
 }
 
 .title {
@@ -48,9 +64,7 @@
 }
 
 .text {
-  font-size: 14px;
-  color: rgba(38, 38, 38, 0.5);
-  margin-bottom: 28px;
+  display: none;
 }
 
 .btnRow {

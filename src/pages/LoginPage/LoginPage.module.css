@@ -214,3 +214,142 @@
 .iconEyeShifted {
   right: 36px;
 }
+
+.informCard {
+  display: none;
+}
+
+/* tablet 768px */
+@media (min-width: 768px) {
+  .main {
+    padding: 96px 32px 40px;
+    max-width: 768px;
+    margin: 0 auto;
+  }
+
+  .petBlock {
+    height: 302px;
+    border-radius: 60px;
+    overflow: hidden;
+    position: relative;
+    display: block;
+  }
+
+  .rectangle {
+    position: absolute;
+    top: 52px;
+    left: 106px;
+    width: 572px;
+    height: 715px;
+    border-radius: 0;
+    z-index: 0;
+    object-fit: fill;
+  }
+
+  .pet {
+    position: absolute;
+    left: 250px;
+    top: 0;
+    width: 364px;
+    height: 302px;
+    object-fit: contain;
+    object-position: top;
+    z-index: 1;
+    max-width: none;
+  }
+
+  .formBlock {
+    width: 704px;
+    height: 560px;
+    margin: 16px 0 0;
+    padding: 71px 140px;
+    border-radius: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+
+  .informCard {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    bottom: 32px;
+    left: 32px;
+    width: 294px;
+    height: 121px;
+    background: var(--color-white);
+    border-radius: 20px;
+    padding: 12px;
+    z-index: 3;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--color-primary-light);
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .avatarImg {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .informTitle {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .birthday {
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(38, 38, 38, 0.5);
+    margin: 0;
+  }
+
+  .birthday span {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .informSubtitle {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--color-text);
+    margin: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+}

@@ -30,6 +30,7 @@ interface Props {
   isFavorite?: boolean;
   onToggleFavorite?: () => void;
   isLoggedIn?: boolean;
+  hideActions?: boolean;
 }
 
 export default function NoticeCard({
@@ -39,6 +40,8 @@ export default function NoticeCard({
   onLearnMore,
   isFavorite,
   onToggleFavorite,
+  isLoggedIn,
+  hideActions,
 }: Props) {
   return (
     <div className={css.card}>
@@ -89,25 +92,30 @@ export default function NoticeCard({
         )}
 
         <div className={css.cardActions}>
-          <button className={css.learnMoreBtn} onClick={onLearnMore}>
+          <button
+            className={`${css.learnMoreBtn} ${hideActions || !isLoggedIn ? css.learnMoreFull : ''}`}
+            onClick={onLearnMore}
+          >
             Learn more
           </button>
-          {showDelete ? (
-            <button className={css.deleteBtn} onClick={onDelete} aria-label="Delete">
-              <svg width={20} height={20}>
-                <use href="/sprite/sprite.svg#icon-trash" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className={`${css.heartBtn} ${isFavorite ? css.heartActive : ''}`}
-              onClick={onToggleFavorite}
-              aria-label="Toggle favorite"
-            >
-              <svg width={18} height={18}>
-                <use href="/sprite/sprite.svg#icon-heart" />
-              </svg>
-            </button>
+          {!hideActions && isLoggedIn && (
+            showDelete ? (
+              <button className={css.deleteBtn} onClick={onDelete} aria-label="Delete">
+                <svg width={20} height={20}>
+                  <use href="/sprite/sprite.svg#icon-trash" />
+                </svg>
+              </button>
+            ) : (
+              <button
+                className={`${css.heartBtn} ${isFavorite ? css.heartActive : ''}`}
+                onClick={onToggleFavorite}
+                aria-label="Toggle favorite"
+              >
+                <svg width={18} height={18}>
+                  <use href="/sprite/sprite.svg#icon-heart" />
+                </svg>
+              </button>
+            )
           )}
         </div>
       </div>

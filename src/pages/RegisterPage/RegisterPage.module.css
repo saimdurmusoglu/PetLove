@@ -214,3 +214,55 @@
 .iconEyeShifted {
   right: 36px;
 }
+
+/* tablet 768px */
+@media (min-width: 768px) {
+  .main {
+    padding: 96px 32px 40px;
+    max-width: 768px;
+    margin: 0 auto;
+  }
+
+  .petBlock {
+    height: 290px;
+    border-radius: 60px;
+    justify-content: flex-end;
+  }
+
+  .rectangle {
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
+    top: auto;
+    width: 294px;
+    height: 121px;
+    border-radius: 20px;
+    z-index: 2;
+    object-fit: cover;
+  }
+
+  .pet {
+    position: relative;
+    z-index: 1;
+    max-width: 320px;
+    height: 290px;
+    object-fit: contain;
+    object-position: bottom;
+  }
+
+  .formBlock {
+    width: 704px;
+    height: 560px;
+    margin: 16px 0 0;
+    padding: 71px 140px;
+    border-radius: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+}
