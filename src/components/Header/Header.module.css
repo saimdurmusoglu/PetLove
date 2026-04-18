@@ -18,6 +18,8 @@
   justify-content: space-between;
   padding: 0 20px;
   width: 100%;
+  max-width: 375px;
+  margin: 0 auto;
   height: 100%;
 }
 
@@ -40,9 +42,14 @@
 }
 
 .desktopNavLink {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.03em;
   color: var(--color-text);
+  padding: 15px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(38, 38, 38, 0.15);
   transition: opacity var(--transition);
 }
 
@@ -51,9 +58,14 @@
 }
 
 .desktopNavLinkWhite {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.03em;
   color: var(--color-white);
+  padding: 15px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
   transition: opacity var(--transition);
 }
 
@@ -63,6 +75,7 @@
 
 .desktopActive {
   font-weight: 700;
+  border-color: var(--color-primary) !important;
 }
 
 .headerRight {
@@ -265,10 +278,6 @@
   color: var(--color-text);
 }
 
-.menuLoggedOut .closeBtn {
-  color: var(--color-text);
-}
-
 .nav {
   display: flex;
   flex-direction: column;
@@ -284,7 +293,6 @@
   padding: 15px 20px;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.5);
-
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
@@ -310,7 +318,6 @@
   padding: 15px 20px;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(38, 38, 38, 0.15);
-
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
@@ -449,83 +456,23 @@
 
 /* tablet 768px */
 @media (min-width: 768px) {
-  .desktopUserBtn {
-    display: flex;
-  }
-
-  .mobileUserBtn {
-    display: none;
-  }
-
   .container {
-    padding: 43px 32px;
-  }
-
-  .containerHome {
-    padding: 43px 64px;
-  }
-
-  .logo img {
-    height: 28px;
+    padding: 32px 32px;
+    max-width: 768px;
   }
 
   .containerHome {
     padding: 60px 64px;
   }
 
+  .logo img {
+    height: 28px;
+  }
+
   .authButtons {
     display: flex;
     align-items: center;
     gap: 12px;
-  }
-
-  .tabletOnly {
-    display: flex;
-  }
-
-  .menu {
-    width: 374px;
-    padding: 236px 60px 40px 60px;
-  }
-
-  .authNav {
-    flex-direction: row;
-    justify-content: center;
-    gap: 12px;
-    margin-left: -60px;
-    margin-right: -60px;
-    padding: 0 60px;
-  }
-
-  .userNav {
-    margin-left: -60px;
-    margin-right: -60px;
-    padding: 0 20px;
-  }
-
-  .loginBtn {
-    width: auto;
-    padding: 12px 28px;
-  }
-
-  .registerBtn {
-    width: auto;
-    padding: 12px 28px;
-  }
-
-  .nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-  }
-
-  .navLink {
-    width: 119px;
-  }
-
-  .navLinkLight {
-    width: 119px;
   }
 
   .headerHome .loginBtnHeader {
@@ -548,6 +495,52 @@
   .headerHome .registerBtnHeader:hover {
     opacity: 0.8;
   }
+
+  .tabletOnly {
+    display: flex;
+  }
+
+  .mobileUserBtn {
+    display: none;
+  }
+
+  .desktopUserBtn {
+    display: flex;
+  }
+
+  .menu {
+    width: 374px;
+    padding: 236px 60px 40px 60px;
+  }
+
+  .authNav {
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+    margin-left: -60px;
+    margin-right: -60px;
+    padding: 0 60px;
+  }
+
+  .loginBtn {
+    width: auto;
+    padding: 12px 28px;
+  }
+
+  .registerBtn {
+    width: auto;
+    padding: 12px 28px;
+  }
+
+  .nav {
+    align-items: center;
+  }
+
+  .userNav {
+    margin-left: -60px;
+    margin-right: -60px;
+    padding: 0 20px;
+  }
 }
 
 /* desktop 1280px */
@@ -555,11 +548,10 @@
   .container {
     padding: 32px 64px;
     max-width: 1280px;
-    margin: 0 auto;
   }
 
   .containerHome {
-    padding: 32px 96px;
+    padding: 47px 64px;
   }
 
   .logo img {
@@ -574,10 +566,6 @@
 
   .burgerBtn {
     display: none;
-  }
-
-  .desktopUserBtn {
-    display: flex;
   }
 
   .mobileTabletOnly {

@@ -40,22 +40,23 @@ export default function NewPage() {
 
   return (
     <main className={`${styles.main} container`}>
-      <h1 className={styles.title}>News</h1>
-
-      <form className={styles.searchForm} onSubmit={handleSearch}>
-        <input
-          className={styles.searchInput}
-          type="text"
-          placeholder="Search"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <button type="submit" className={styles.searchBtn}>
-          <svg width="18" height="18">
-            <use href="/sprite/sprite.svg#icon-search" />
-          </svg>
-        </button>
-      </form>
+      <div className={styles.titleRow}>
+        <h1 className={styles.title}>News</h1>
+        <form className={styles.searchForm} onSubmit={handleSearch}>
+          <input
+            className={styles.searchInput}
+            type="text"
+            placeholder="Search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button type="submit" className={styles.searchBtn}>
+            <svg width="18" height="18">
+              <use href="/sprite/sprite.svg#icon-search" />
+            </svg>
+          </button>
+        </form>
+      </div>
 
       <ul className={styles.list}>
         {news.map((item) => (

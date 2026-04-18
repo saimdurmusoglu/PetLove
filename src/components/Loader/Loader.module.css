@@ -60,3 +60,23 @@
 .hidden {
   opacity: 0;
 }
+
+@media (min-width: 768px) {
+  .center {
+    width: 374px;
+    height: 100px;
+  }
+
+  .logo {
+    width: 374px;
+    height: 100px;
+  }
+
+  .counter {
+    width: 374px;
+    height: 100px;
+    font-size: 80px;
+    line-height: 80px;
+    letter-spacing: -0.04em;
+  }
+}

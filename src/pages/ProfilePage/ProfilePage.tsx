@@ -28,16 +28,13 @@ export default function ProfilePage() {
   const location = useLocation();
   const [showLogout, setShowLogout] = useState(false);
   const [showEditUser, setShowEditUser] = useState(false);
-  const [showCongrats, setShowCongrats] = useState(false);
+  const [showCongrats, setShowCongrats] = useState(() => {
+    const show = !!location.state?.showCongrats;
+    if (show) window.history.replaceState({}, document.title);
+    return show;
+  });
   const [activeTab, setActiveTab] = useState<Tab>('favorites');
   const [selectedNotice, setSelectedNotice] = useState<NoticeDetail | null>(null);
-
-  useEffect(() => {
-    if (location.state?.showCongrats) {
-      setShowCongrats(true);
-      window.history.replaceState({}, document.title);
-    }
-  }, []);
 
   useEffect(() => {
     dispatch(fetchCurrentUser());

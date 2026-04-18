@@ -10,7 +10,7 @@
   width: 100%;
   height: 280px;
   background-color: var(--color-primary);
-  border-radius:30px;
+  border-radius: 30px;
   overflow: hidden;
   display: flex;
   align-items: flex-end;
@@ -26,12 +26,18 @@
 }
 
 .pet {
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   z-index: 1;
   height: 280px;
   width: 100%;
   max-width: 335px;
-  object-fit: contain;
+  object-fit: cover;
+}
+
+.informCard {
+  display: none;
 }
 
 .formBlock {
@@ -58,7 +64,7 @@
   letter-spacing: -0.02em;
   color: var(--color-text);
   margin-bottom: 24px;
-  width:100%;
+  width: 100%;
 }
 
 .form {
@@ -79,6 +85,8 @@
   border: 1px solid rgba(38, 38, 38, 0.15);
   font-size: 14px;
   font-weight: 500;
+  line-height: 1.286;
+  letter-spacing: -0.03em;
   color: var(--color-text);
   outline: none;
   transition: border-color var(--transition);
@@ -215,10 +223,6 @@
   right: 36px;
 }
 
-.informCard {
-  display: none;
-}
-
 /* tablet 768px */
 @media (min-width: 768px) {
   .main {
@@ -228,6 +232,7 @@
   }
 
   .petBlock {
+    width: 704px;
     height: 302px;
     border-radius: 60px;
     overflow: hidden;
@@ -258,6 +263,96 @@
     max-width: none;
   }
 
+  .informCard {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    bottom: 32px;
+    left: 32px;
+    width: 294px;
+    height: 121px;
+    background: var(--color-white);
+    border-radius: 20px;
+    padding: 16px;
+    z-index: 3;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--color-primary-light);
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .avatarImg {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+    margin-top: 4px;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .informTitle {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .birthday {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.167;
+    letter-spacing: -0.02em;
+    color: rgba(38, 38, 38, 0.5);
+    margin: 0;
+  }
+
+  .birthday span {
+    color: var(--color-text);
+  }
+
+  .informSubtitle {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.167;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+    width: 194px;
+    height: 56px;
+    margin: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
   .formBlock {
     width: 704px;
     height: 560px;
@@ -270,86 +365,190 @@
     box-sizing: border-box;
   }
 
+  .title {
+    font-size: 54px;
+    margin-bottom: 16px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    line-height: 1.223;
+    margin-bottom: 32px;
+  }
+
+  .form {
+    gap: 16px;
+  }
+
+  .input {
+    height: 52px;
+    padding: 16px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .errorMsg {
+    font-size: 12px;
+    line-height: 1.167;
+    margin-top: 4px;
+    padding-left: 9px;
+  }
+
+  .iconError {
+    right: 15px;
+    top: 15px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .iconEye {
+    right: 15px;
+    top: 15px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .iconSuccess {
+    right: 50px;
+    top: 15px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .submitBtn {
+    height: 52px;
+    font-size: 16px;
+    line-height: 1.25;
+    margin-top: 64px;
+    margin-bottom: 16px;
+    padding: 16px;
+  }
+
+  .switchText {
+    font-size: 14px;
+    line-height: 1.429;
+  }
+
+  .switchLink {
+    font-weight: 700;
+  }
+
+  .apiError {
+    font-size: 14px;
+  }
+
+  .iconEyeShifted {
+    right: 50px;
+  }
+}
+
+/* desktop 1280px */
+@media (min-width: 1280px) {
+  .main {
+    padding: 114px 32px 32px;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 32px;
+    min-height: calc(100vh - 80px);
+  }
+
+  .petBlock {
+    width: 592px;
+    height: 654px;
+    flex-shrink: 0;
+    border-radius: 60px;
+    overflow: hidden;
+    position: relative;
+    display: block;
+  }
+
+  .rectangle {
+    position: absolute;
+    top: 28px;
+    left: 16px;
+    width: 572px;
+    height: 715px;
+    object-fit: fill;
+    border-radius: 0;
+    z-index: 0;
+  }
+
+  .pet {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 512px;
+    height: 660px;
+    object-fit: cover;
+    object-position: bottom;
+    z-index: 1;
+    max-width: none;
+  }
 
   .informCard {
     position: absolute;
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-    bottom: 32px;
-    left: 32px;
+    bottom: 97px;
+    left: 61px;
     width: 294px;
     height: 121px;
-    background: var(--color-white);
-    border-radius: 20px;
-    padding: 12px;
     z-index: 3;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   }
 
-  .avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--color-primary-light);
-    flex-shrink: 0;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .avatarImg {
-    width: 44px;
-    height: 44px;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-
-  .content {
+  .formBlock {
+    flex: 1;
+    margin: 0;
+    padding: 118px 84px;
+    border-radius: 60px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    flex: 1;
-    min-width: 0;
+    justify-content: center;
+    height: 654px;
+    width: 592px;
+    box-sizing: border-box;
   }
 
-  .row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    flex-wrap: wrap;
+  .title {
+    font-size: 54px;
+    line-height: 1;
+    margin-bottom: 16px;
   }
 
-  .informTitle {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0;
+  .subtitle {
+    font-size: 18px;
+    line-height: 1.223;
+    margin-bottom: 32px;
+    max-width: 424px;
   }
 
-  .birthday {
-    font-size: 10px;
-    font-weight: 500;
-    color: rgba(38, 38, 38, 0.5);
-    margin: 0;
+  .input {
+    height: 52px;
+    font-size: 16px;
+    line-height: 1.25;
+    padding: 16px;
   }
 
-  .birthday span {
-    color: var(--color-text);
-    font-weight: 600;
+  .iconEye,
+  .iconError,
+  .iconSuccess {
+    top: 15px;
   }
 
-  .informSubtitle {
-    font-size: 10px;
-    font-weight: 400;
-    line-height: 1.4;
-    color: var(--color-text);
-    margin: 0;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+  .iconEyeShifted {
+    right: 40px;
+  }
+
+  .iconSuccess {
+    right: 40px;
+    top: 15px;
+  }
+
+  .submitBtn {
+    height: 52px;
+    font-size: 16px;
+    line-height: 1.25;
+    margin-top: 64px;
   }
 }

@@ -75,12 +75,39 @@ const RegisterPage = () => {
           alt=""
           className={styles.rectangle}
         />
-        <img
-          src="/images/register-pet@1x.png"
-          srcSet="/images/register-pet@2x.png 2x"
-          alt="cat"
-          className={styles.pet}
-        />
+        <picture>
+          <source
+            media="(min-width: 1280px)"
+            srcSet="/images/register-pet-desktop@1x.png 1x, /images/register-pet-desktop@2x.png 2x"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcSet="/images/register-pet-tablet@1x.png 1x, /images/register-pet-tablet@2x.png 2x"
+          />
+          <img
+            src="/images/register-pet-mobile@1x.png"
+            srcSet="/images/register-pet-mobile@2x.png 2x"
+            alt="cat"
+            className={styles.pet}
+          />
+        </picture>
+        <div className={styles.informCard}>
+          <div className={styles.avatar}>
+            <img
+              src="/images/cat@1x.png"
+              srcSet="/images/cat@2x.png 2x"
+              alt=""
+              className={styles.avatarImg}
+            />
+          </div>
+          <div className={styles.content}>
+            <div className={styles.row}>
+              <h3 className={styles.informTitle}>Jack</h3>
+              <p className={styles.birthday}>Birthday: <span>18.10.2021</span></p>
+            </div>
+            <p className={styles.informSubtitle}>Jack is a gray Persian cat with green eyes. He loves to be pampered and groomed, and enjoys playing with toys.</p>
+          </div>
+        </div>
       </div>
 
       <div className={styles.formBlock}>

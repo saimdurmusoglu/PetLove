@@ -69,12 +69,22 @@ const LoginPage = () => {
           alt=""
           className={styles.rectangle}
         />
-        <img
-          src="/images/login-pet@1x.png"
-          srcSet="/images/login-pet@2x.png 2x"
-          alt="dog"
-          className={styles.pet}
-        />
+        <picture>
+          <source
+            media="(min-width: 1280px)"
+            srcSet="/images/login-pet-desktop@1x.png 1x, /images/login-pet-desktop@2x.png 2x"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcSet="/images/login-pet-tablet@1x.png 1x, /images/login-pet-tablet@2x.png 2x"
+          />
+          <img
+            src="/images/login-pet-mobile@1x.png"
+            srcSet="/images/login-pet-mobile@2x.png 2x"
+            alt="dog"
+            className={styles.pet}
+          />
+        </picture>
         <div className={styles.informCard}>
           <div className={styles.avatar}>
             <img
