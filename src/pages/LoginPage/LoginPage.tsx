@@ -7,6 +7,7 @@ import {toast} from "react-toastify";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {
   loginUser,
+  fetchCurrentUser,
   selectAuthError,
   selectAuthLoading,
 } from "../../redux/slices/authSlice";
@@ -56,7 +57,8 @@ const LoginPage = () => {
   const onSubmit = async (data: LoginFormData) => {
     const result = await dispatch(loginUser(data));
     if (loginUser.fulfilled.match(result)) {
-      navigate("/profile");
+      await dispatch(fetchCurrentUser());
+      navigate("/");
     }
   };
 
