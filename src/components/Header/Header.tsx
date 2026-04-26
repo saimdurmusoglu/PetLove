@@ -85,9 +85,9 @@ const Header = () => {
             </div>
           )}
 
-          {/* tablet: login olmuş + home değil */}
-          {isLoggedIn && !isHome && (
-            <div className={styles.authButtons}>
+          {/* desktop only: login olmuş */}
+          {isLoggedIn && (
+            <div className={`${styles.authButtons} ${styles.desktopOnly}`}>
               <button className={styles.logoutBtnHeader} onClick={() => setShowLogout(true)}>Log out</button>
             </div>
           )}
