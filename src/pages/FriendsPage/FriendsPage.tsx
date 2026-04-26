@@ -45,21 +45,21 @@ function FriendCard({friend}: {friend: Friend}) {
         {friend.email && (
           <div className={css.infoRow}>
             <span className={css.infoLabel}>Email:</span>
-            <span className={css.infoVal}>{friend.email}</span>
+            <a href={`mailto:${friend.email}`} className={`${css.infoVal} ${css.infoLink}`}>{friend.email}</a>
           </div>
         )}
 
         {friend.address && (
           <div className={css.infoRow}>
             <span className={css.infoLabel}>Address:</span>
-            <span className={css.infoVal}>{friend.address}</span>
+            <a href={`https://maps.google.com/?q=${encodeURIComponent(friend.address)}`} target="_blank" rel="noreferrer" className={`${css.infoVal} ${css.infoLink}`}>{friend.address}</a>
           </div>
         )}
 
         {friend.phone && (
           <div className={css.infoRow}>
             <span className={css.infoLabel}>Phone:</span>
-            <span className={css.infoVal}>{friend.phone}</span>
+            <a href={`tel:${friend.phone}`} className={`${css.infoVal} ${css.infoLink}`}>{friend.phone}</a>
           </div>
         )}
       </div>

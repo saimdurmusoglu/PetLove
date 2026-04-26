@@ -24,6 +24,33 @@
   border-radius: 16px;
 }
 
+@media (max-width: 374px) {
+  .card {
+    padding: 20px 16px;
+  }
+
+  .cardImg {
+    height: 140px;
+  }
+
+  .cardBody {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .cardMeta {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .learnMoreBtn {
+    width: auto;
+    min-width: 0;
+    padding: 10px 16px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+}
+
 @media (min-width: 768px) {
   .card {
     padding: 32px 14px;

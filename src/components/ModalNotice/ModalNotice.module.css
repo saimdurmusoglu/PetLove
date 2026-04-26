@@ -156,6 +156,21 @@
   margin-bottom: 20px;
 }
 
+@media (max-width: 374px) {
+  .modal {
+    padding: 40px 20px;
+  }
+
+  .metaGrid {
+    gap: 4px 10px;
+  }
+
+  .favoriteBtn,
+  .contactBtn {
+    font-size: 14px;
+  }
+}
+
 .actions {
   display: flex;
   gap: 10px;

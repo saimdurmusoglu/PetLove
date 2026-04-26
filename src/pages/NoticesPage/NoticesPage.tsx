@@ -72,7 +72,9 @@ export default function NoticesPage() {
   const page = useAppSelector(selectPage);
   const categories = useAppSelector(selectCategories);
   const sexOptions = useAppSelector(selectSexOptions);
-  const speciesList = useAppSelector(selectSpeciesList);
+  const speciesList = useAppSelector(selectSpeciesList).map(
+    (s) => s.charAt(0).toUpperCase() + s.slice(1),
+  );
   const favoriteIds = useAppSelector(selectFavoriteIds);
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
 
@@ -486,6 +488,7 @@ export default function NoticesPage() {
               );
             })}
           </div>
+
         </div>
 
         {isLoading && <p className={styles.loading}>Loading...</p>}

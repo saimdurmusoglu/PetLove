@@ -380,6 +380,26 @@
   color: var(--color-text);
 }
 
+@media (max-width: 374px) {
+  .pagination {
+    gap: 8px;
+  }
+
+  .paginationGroup {
+    gap: 4px;
+  }
+
+  .pageBtn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .dots {
+    width: 32px;
+    height: 32px;
+  }
+}
+
 .suggestionMenu {
   position: absolute;
   top: calc(100% + 4px);

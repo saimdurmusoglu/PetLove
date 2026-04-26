@@ -1,12 +1,12 @@
 import {useState} from "react";
 import {NavLink, Link, useLocation} from "react-router-dom";
-import {useAppSelector, useAppDispatch} from "../../hooks/redux";
-import {logout} from "../../redux/slices/authSlice";
+import {useAppSelector} from "../../hooks/redux";
+import ModalApproveAction from "../ModalApproveAction/ModalApproveAction";
 import styles from "./Header.module.css";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const dispatch = useAppDispatch();
+  const [showLogout, setShowLogout] = useState(false);
   const {isLoggedIn, user} = useAppSelector((state) => state.auth);
   const {pathname} = useLocation();
   const isHome = pathname === "/";
@@ -87,8 +87,8 @@ const Header = () => {
 
           {/* tablet: login olmuş + home değil */}
           {isLoggedIn && !isHome && (
-            <div className={`${styles.authButtons} ${styles.tabletOnly}`}>
-              <button className={styles.logoutBtnHeader} onClick={() => dispatch(logout())}>Log out</button>
+            <div className={styles.authButtons}>
+              <button className={styles.logoutBtnHeader} onClick={() => setShowLogout(true)}>Log out</button>
             </div>
           )}
 
@@ -202,7 +202,7 @@ const Header = () => {
                   )}
                   <span>{user?.name}</span>
                 </Link>
-                <button className={styles.logoutBtn} onClick={() => { dispatch(logout()); closeMenu(); }}>Log out</button>
+                <button className={styles.logoutBtn} onClick={() => { closeMenu(); setShowLogout(true); }}>Log out</button>
               </div>
             ) : (
               <div className={styles.authNav}>
@@ -225,6 +225,7 @@ const Header = () => {
           </div>
         </div>
       )}
+      {showLogout && <ModalApproveAction onClose={() => setShowLogout(false)} />}
     </header>
   );
 };

@@ -50,6 +50,21 @@ export default function NewPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
+          {search && (
+            <button
+              type="button"
+              className={styles.clearBtn}
+              onClick={() => {
+                setSearch("");
+                setKeyword("");
+                setPage(1);
+              }}
+            >
+              <svg width={16} height={16}>
+                <use href="/sprite/sprite.svg#icon-cross-small" />
+              </svg>
+            </button>
+          )}
           <button type="submit" className={styles.searchBtn}>
             <svg width="18" height="18">
               <use href="/sprite/sprite.svg#icon-search" />

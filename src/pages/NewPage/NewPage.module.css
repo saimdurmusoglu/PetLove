@@ -52,6 +52,22 @@
   height: 18px;
 }
 
+.clearBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(38, 38, 38, 0.5);
+  display: flex;
+  align-items: center;
+  padding: 0;
+  flex-shrink: 0;
+  transition: color var(--transition);
+}
+
+.clearBtn:hover {
+  color: var(--color-text);
+}
+
 .list {
   list-style: none;
   padding: 0;
@@ -214,6 +230,26 @@
   background: transparent;
   font-size: 14px;
   color: var(--color-text);
+}
+
+@media (max-width: 374px) {
+  .pagination {
+    gap: 8px;
+  }
+
+  .paginationGroup {
+    gap: 4px;
+  }
+
+  .pageBtn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .dots {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 /* tablet 768px */

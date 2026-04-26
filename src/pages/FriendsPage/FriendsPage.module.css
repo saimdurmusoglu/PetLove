@@ -15,7 +15,8 @@
 
 .card {
   background: var(--color-white);
-  width: 335px;
+  width: 100%;
+  max-width: 335px;
   height: 184px;
   border-radius: 15px;
   padding: 40px 20px;
@@ -55,9 +56,9 @@
 }
 
 .partnerBody {
-  width: 196px;
+  flex: 1;
+  min-width: 0;
   min-height: 70px;
-  flex-shrink: 0;
   overflow: hidden;
 }
 
@@ -103,6 +104,16 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.infoLink {
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.infoLink:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
 }
 
 .timeBadge {

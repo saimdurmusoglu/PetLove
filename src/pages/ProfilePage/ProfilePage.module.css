@@ -360,8 +360,7 @@
 
 .noticesList {
   display: grid;
-  grid-template-columns: 335px;
-  justify-content: center;
+  grid-template-columns: minmax(0, 1fr);
   gap: 20px;
   list-style: none;
   padding: 0;
