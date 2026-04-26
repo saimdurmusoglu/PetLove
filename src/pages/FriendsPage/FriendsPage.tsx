@@ -94,13 +94,15 @@ export default function FriendsPage() {
       {loading && <p className={css.loading}>Loading...</p>}
       {error && <p className={css.error}>{error}</p>}
 
-      {!loading &&
-        !error &&
-        [...friends]
-          .sort((a, b) => a.title.localeCompare(b.title))
-          .map((friend) => (
-            <FriendCard key={friend._id} friend={friend} />
-          ))}
+      {!loading && !error && (
+        <div className={css.list}>
+          {[...friends]
+            .sort((a, b) => a.title.localeCompare(b.title))
+            .map((friend) => (
+              <FriendCard key={friend._id} friend={friend} />
+            ))}
+        </div>
+      )}
     </div>
   );
 }

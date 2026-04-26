@@ -11,26 +11,11 @@
   gap: 20px;
 }
 
-@media (min-width: 1280px) {
-  .layout {
-    flex-direction: row;
-    align-items: flex-start;
-  }
-}
-
-/* User Card */
 .userCard {
   background: var(--color-white);
   border-radius: 30px;
   padding: 20px;
   position: relative;
-}
-
-@media (min-width: 1280px) {
-  .userCard {
-    width: 340px;
-    flex-shrink: 0;
-  }
 }
 
 .userCardTop {
@@ -50,13 +35,12 @@
   padding: 6px 12px;
   font-size: 12px;
   font-weight: 700;
-
+  height: 38px;
+  box-sizing: border-box;
+  white-space: nowrap;
 }
 
 .editBtn {
-  position: absolute;
-  top: 16px;
-  right: 16px;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -68,6 +52,7 @@
   justify-content: center;
   color: var(--color-text);
   padding: 0;
+  position: static;
 }
 
 .avatarWrap {
@@ -75,6 +60,7 @@
   flex-direction: column;
   align-items: center;
   margin: 16px 0;
+  position: static;
 }
 
 .avatarBtn {
@@ -103,13 +89,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
 }
 
 .avatarIcon {
   display: block;
   flex-shrink: 0;
-  filter: brightness(0) saturate(100%) invert(73%) sepia(60%) saturate(600%) hue-rotate(1deg) brightness(105%);
+  filter: brightness(0) saturate(100%) invert(73%) sepia(60%) saturate(600%)
+    hue-rotate(1deg) brightness(105%);
 }
 
 .uploadText {
@@ -151,6 +137,7 @@
   color: var(--color-text);
   outline: none;
   cursor: default;
+  box-sizing: border-box;
 }
 
 .infoInputFilled {
@@ -185,7 +172,6 @@
   font-size: 12px;
   font-weight: 700;
   text-decoration: none;
-
   transition: background var(--transition);
 }
 
@@ -211,6 +197,7 @@
   padding: 16px;
   min-height: 132px;
   position: relative;
+  box-sizing: border-box;
 }
 
 .petImg {
@@ -233,26 +220,27 @@
 }
 
 .petInfo {
-  width: 153px;
-  flex-shrink: 0;
+  flex: 1;
+  min-width: 0;
 }
 
 .petName {
   font-size: 14px;
   font-weight: 700;
   line-height: 18px;
-  letter-spacing: 0%;
   color: var(--color-text);
   margin-bottom: 8px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding-right: 36px;
 }
 
 .petMetaRow {
   display: flex;
-  gap: 16px;
+  gap: 10px;
   margin-bottom: 4px;
+  flex-wrap: wrap;
 }
 
 .petMetaCol {
@@ -263,27 +251,16 @@
   justify-content: center;
 }
 
-.petMetaColName {
-  width: 40px;
-}
-
-.petMetaColBirthday {
-  width: 56px;
-}
-
-.petMetaColSex {
-  width: 39px;
-}
-
-.petMetaColSpecies {
-  width: 37px;
-}
+.petMetaColName     { min-width: 40px; }
+.petMetaColBirthday { min-width: 56px; }
+.petMetaColSex      { min-width: 39px; }
+.petMetaColSpecies  { min-width: 37px; }
 
 .petMetaLabel {
   font-size: 10px;
   font-weight: 500;
   line-height: 14px;
-  letter-spacing: -2%;
+  letter-spacing: -0.02em;
   color: var(--color-text-50);
 }
 
@@ -291,7 +268,7 @@
   font-size: 10px;
   font-weight: 500;
   line-height: 14px;
-  letter-spacing: -2%;
+  letter-spacing: -0.02em;
   color: var(--color-text);
   white-space: nowrap;
   overflow: hidden;
@@ -313,7 +290,6 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  overflow: visible;
   position: absolute;
   top: 12px;
   right: 12px;
@@ -343,18 +319,19 @@
   padding: 0 28px;
   margin-top: 16px;
   cursor: pointer;
-
   text-transform: uppercase;
   transition: opacity var(--transition);
+  display: block;
 }
 
 .logoutBtn:hover {
   opacity: 0.8;
 }
 
-/* My Notices */
 .myNotices {
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .tabRow {
@@ -383,22 +360,15 @@
 
 .noticesList {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 335px;
+  justify-content: center;
   gap: 20px;
   list-style: none;
   padding: 0;
 }
 
-@media (min-width: 768px) {
-  .noticesList {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (min-width: 1280px) {
-  .noticesList {
-    grid-template-columns: 1fr 1fr;
-  }
+.noticesList > li {
+  height: 454px;
 }
 
 .emptyText {
@@ -406,4 +376,267 @@
   color: var(--color-text-50);
   text-align: center;
   padding: 40px 0;
+}
+
+@media (min-width: 768px) {
+  .layout {
+    gap: 32px;
+  }
+
+  .userCard {
+    width: 704px;
+    min-height: 699px;
+    padding: 40px;
+  }
+
+  .userCardTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0;
+    min-height: 38px;
+  }
+
+  .userBadge {
+    width: 80px;
+    height: 38px;
+  }
+
+  .editBtn {
+    position: static;
+    width: 38px;
+    height: 38px;
+  }
+
+  .avatarWrap {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .avatarImg {
+    width: 110px;
+    height: 110px;
+  }
+
+  .avatarCircle {
+    width: 110px;
+    height: 110px;
+  }
+
+  .uploadText {
+    text-decoration: none;
+    margin-top: 6px;
+  }
+
+  .sectionTitle {
+    margin-top: 100px;
+    margin-bottom: 20px;
+  }
+
+  .infoSection {
+    margin-bottom: 0;
+  }
+
+  .petsHeader {
+    margin-bottom: 20px;
+  }
+
+  .logoutBtn {
+    margin-top: 20px;
+  }
+
+  .tab {
+    min-height: 48px;
+    min-width: 142px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.03em;
+  }
+
+  .sectionGap {
+    height: 40px;
+  }
+
+  .infoSection {
+    display: grid;
+    grid-template-columns: 305px 305px;
+    grid-template-rows: auto auto;
+    column-gap: 14px;
+    row-gap: 14px;
+  }
+
+  .infoInput:nth-child(1) { grid-column: 1; grid-row: 1; }
+  .infoInput:nth-child(2) { grid-column: 2; grid-row: 1; }
+  .infoInput:nth-child(3) { grid-column: 1; grid-row: 2; }
+
+  .infoInput {
+    width: 305px;
+  }
+
+  .petsList {
+    display: grid;
+    grid-template-columns: 305px 305px;
+    gap: 14px;
+  }
+
+  .petItem {
+    width: 305px;
+    height: 149px;
+    min-height: unset;
+    padding: 22px 16px 23px 16px;
+  }
+
+  .petImg,
+  .petImgPlaceholder {
+    width: 75px;
+    height: 75px;
+  }
+
+  .petName {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 0;
+  }
+
+  .petMetaLabel {
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: -0.02em;
+  }
+
+  .petMetaRow {
+    gap: 10px;
+    margin-bottom: 0;
+  }
+
+  .petMetaValue {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: -0.02em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .petMetaCol {
+    height: 32px;
+  }
+
+  .petMetaColName     { width: 30px; }
+  .petMetaColBirthday { width: 56px; }
+  .petMetaColSex      { width: 39px; }
+  .petMetaColSpecies  { width: 37px; }
+
+  .noticesList {
+    grid-template-columns: 342px 342px;
+    justify-content: unset;
+  }
+
+  .noticesList > li {
+    width: 342px;
+    height: 422px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .userCard {
+    width: 340px;
+    flex-shrink: 0;
+    padding: 20px;
+  }
+
+  .userCardTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    min-height: unset;
+  }
+
+  .userBadge {
+    width: auto;
+    height: 38px;
+  }
+
+  .editBtn {
+    position: static;
+    width: 32px;
+    height: 32px;
+  }
+
+  .avatarWrap {
+    position: static;
+    left: unset;
+    top: unset;
+    transform: none;
+    flex-direction: column;
+    align-items: center;
+    margin: 16px 0;
+  }
+
+  .avatarImg {
+    width: 94px;
+    height: 94px;
+  }
+
+  .avatarCircle {
+    width: 94px;
+    height: 94px;
+  }
+
+  .uploadText {
+    text-decoration: underline;
+    margin-top: 8px;
+  }
+
+  .sectionTitle {
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+
+  .infoSection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .infoInput {
+    width: 100%;
+  }
+
+  .petsList {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .petItem {
+    width: auto;
+    height: auto;
+    min-height: 132px;
+  }
+
+  .noticesList {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .noticesList > li {
+    width: auto;
+    height: auto;
+  }
 }

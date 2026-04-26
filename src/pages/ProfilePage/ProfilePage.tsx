@@ -1,24 +1,28 @@
-import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import {useEffect, useState} from "react";
+import {Link, useLocation} from "react-router-dom";
+import {toast} from "react-toastify";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {
   fetchCurrentUser,
   removePet,
   selectUser,
   selectIsLoggedIn,
-} from '../../redux/slices/authSlice';
-import { removeFromFavorites, getNoticeById, addToFavorites } from '../../services/noticesService';
-import type { NoticeCardItem } from '../../components/NoticeCard/NoticeCard';
-import type { NoticeDetail } from '../../types/notices';
-import NoticeCard from '../../components/NoticeCard/NoticeCard';
-import ModalNotice from '../../components/ModalNotice/ModalNotice';
-import ModalCongrats from '../../components/ModalCongrats/ModalCongrats';
-import ModalApproveAction from '../../components/ModalApproveAction/ModalApproveAction';
-import ModalEditUser from '../../components/ModalEditUser/ModalEditUser';
-import css from './ProfilePage.module.css';
+} from "../../redux/slices/authSlice";
+import {
+  removeFromFavorites,
+  getNoticeById,
+  addToFavorites,
+} from "../../services/noticesService";
+import type {NoticeCardItem} from "../../components/NoticeCard/NoticeCard";
+import type {NoticeDetail} from "../../types/notices";
+import NoticeCard from "../../components/NoticeCard/NoticeCard";
+import ModalNotice from "../../components/ModalNotice/ModalNotice";
+import ModalCongrats from "../../components/ModalCongrats/ModalCongrats";
+import ModalApproveAction from "../../components/ModalApproveAction/ModalApproveAction";
+import ModalEditUser from "../../components/ModalEditUser/ModalEditUser";
+import css from "./ProfilePage.module.css";
 
-type Tab = 'favorites' | 'viewed';
+type Tab = "favorites" | "viewed";
 
 export default function ProfilePage() {
   const dispatch = useAppDispatch();
@@ -33,8 +37,10 @@ export default function ProfilePage() {
     if (show) window.history.replaceState({}, document.title);
     return show;
   });
-  const [activeTab, setActiveTab] = useState<Tab>('favorites');
-  const [selectedNotice, setSelectedNotice] = useState<NoticeDetail | null>(null);
+  const [activeTab, setActiveTab] = useState<Tab>("favorites");
+  const [selectedNotice, setSelectedNotice] = useState<NoticeDetail | null>(
+    null,
+  );
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
@@ -44,7 +50,7 @@ export default function ProfilePage() {
     try {
       await dispatch(removePet(id)).unwrap();
     } catch {
-      toast.error('Failed to remove pet');
+      toast.error("Failed to remove pet");
     }
   };
 
@@ -53,7 +59,7 @@ export default function ProfilePage() {
       await removeFromFavorites(id);
       dispatch(fetchCurrentUser());
     } catch {
-      toast.error('Failed to remove from favorites');
+      toast.error("Failed to remove from favorites");
     }
   };
 
@@ -62,13 +68,13 @@ export default function ProfilePage() {
       const notice = await getNoticeById(id);
       setSelectedNotice(notice);
     } catch {
-      toast.error('Failed to load notice details');
+      toast.error("Failed to load notice details");
     }
   };
 
   const handleToggleFavorite = async (id: string) => {
     try {
-      const isFav = favorites.some(n => n._id === id);
+      const isFav = favorites.some((n) => n._id === id);
       if (isFav) {
         await removeFromFavorites(id);
       } else {
@@ -76,13 +82,14 @@ export default function ProfilePage() {
       }
       dispatch(fetchCurrentUser());
     } catch {
-      toast.error('Failed to update favorites');
+      toast.error("Failed to update favorites");
     }
   };
 
-  const favorites = (user?.noticesFavorites || []) as unknown as NoticeCardItem[];
+  const favorites = (user?.noticesFavorites ||
+    []) as unknown as NoticeCardItem[];
   const viewed = (user?.noticesViewed || []) as unknown as NoticeCardItem[];
-  const tabItems = activeTab === 'favorites' ? favorites : viewed;
+  const tabItems = activeTab === "favorites" ? favorites : viewed;
 
   if (!isLoggedIn || !user) return null;
 
@@ -91,10 +98,15 @@ export default function ProfilePage() {
       <div className={css.layout}>
         {/* User Card */}
         <div className={css.userCard}>
+          {/* Üst satır: User badge solda. Edit butonu absolute sağ üstte. */}
           <div className={css.userCardTop}>
             <div className={css.userBadge}>
               <span>User</span>
-              <svg width={16} height={16} style={{ filter: 'brightness(0) invert(1)' }}>
+              <svg
+                width={16}
+                height={16}
+                style={{filter: "brightness(0) invert(1)"}}
+              >
                 <use href="/sprite/sprite.svg#icon-user" />
               </svg>
             </div>
@@ -109,6 +121,7 @@ export default function ProfilePage() {
             </button>
           </div>
 
+          {/* Avatar — mobilde ortalı aşağıda, tablette absolute ile ortalanmış yukarıda */}
           <div className={css.avatarWrap}>
             <button
               className={css.avatarBtn}
@@ -116,25 +129,55 @@ export default function ProfilePage() {
               aria-label="Upload photo"
             >
               {user.avatar ? (
-                <img src={user.avatar} alt={user.name} className={css.avatarImg} />
+                <img
+                  src={user.avatar}
+                  alt={user.name}
+                  className={css.avatarImg}
+                />
               ) : (
                 <div className={css.avatarCircle}>
-                  <svg width={54} height={54} viewBox="0 0 20 20" className={css.avatarIcon}>
+                  <svg
+                    width={54}
+                    height={54}
+                    viewBox="0 0 20 20"
+                    className={css.avatarIcon}
+                  >
                     <use href="/sprite/sprite.svg#icon-user" />
                   </svg>
                 </div>
               )}
             </button>
-            <button className={css.uploadText} onClick={() => setShowEditUser(true)}>
-              Upload photo
-            </button>
+
+            {/* Upload photo: sadece avatar yoksa */}
+            {!user.avatar && (
+              <button
+                className={css.uploadText}
+                onClick={() => setShowEditUser(true)}
+              >
+                Upload photo
+              </button>
+            )}
           </div>
 
+          {/* My Information */}
+          <h2 className={css.sectionTitle}>My information</h2>
           <div className={css.infoSection}>
-            <h2 className={css.sectionTitle}>My information</h2>
-            <input readOnly value={user?.name || ''} className={`${css.infoInput} ${user?.name ? css.infoInputFilled : ''}`} />
-            <input readOnly value={user?.email || ''} className={`${css.infoInput} ${user?.email ? css.infoInputFilled : ''}`} />
-            <input readOnly value={user?.phone || ''} placeholder="+380" className={`${css.infoInput} ${user?.phone ? css.infoInputFilled : ''}`} />
+            <input
+              readOnly
+              value={user?.name || ""}
+              className={`${css.infoInput} ${user?.name ? css.infoInputFilled : ""}`}
+            />
+            <input
+              readOnly
+              value={user?.email || ""}
+              className={`${css.infoInput} ${user?.email ? css.infoInputFilled : ""}`}
+            />
+            <input
+              readOnly
+              value={user?.phone || ""}
+              placeholder="+380"
+              className={`${css.infoInput} ${user?.phone ? css.infoInputFilled : ""}`}
+            />
           </div>
 
           <div className={css.sectionGap} />
@@ -144,17 +187,26 @@ export default function ProfilePage() {
             <Link to="/add-pet" className={css.addPetBtn}>
               Add pet
               <svg width={16} height={16} viewBox="0 0 16 16" fill="none">
-                <path d="M8 2v12M2 8h12" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                <path
+                  d="M8 2v12M2 8h12"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
               </svg>
             </Link>
           </div>
 
           {user.pets && user.pets.length > 0 ? (
             <ul className={css.petsList}>
-              {user.pets.map(pet => (
+              {user.pets.map((pet) => (
                 <li key={pet._id} className={css.petItem}>
                   {pet.imgURL ? (
-                    <img src={pet.imgURL} alt={pet.name} className={css.petImg} />
+                    <img
+                      src={pet.imgURL}
+                      alt={pet.name}
+                      className={css.petImg}
+                    />
                   ) : (
                     <div className={css.petImgPlaceholder}>
                       <svg width={24} height={24}>
@@ -165,11 +217,15 @@ export default function ProfilePage() {
                   <div className={css.petInfo}>
                     <p className={css.petName}>{pet.title || pet.name}</p>
                     <div className={css.petMetaRow}>
-                      <div className={`${css.petMetaCol} ${css.petMetaColName}`}>
+                      <div
+                        className={`${css.petMetaCol} ${css.petMetaColName}`}
+                      >
                         <span className={css.petMetaLabel}>Name</span>
                         <span className={css.petMetaValue}>{pet.name}</span>
                       </div>
-                      <div className={`${css.petMetaCol} ${css.petMetaColBirthday}`}>
+                      <div
+                        className={`${css.petMetaCol} ${css.petMetaColBirthday}`}
+                      >
                         <span className={css.petMetaLabel}>Birthday</span>
                         <span className={css.petMetaValue}>{pet.birthday}</span>
                       </div>
@@ -178,7 +234,9 @@ export default function ProfilePage() {
                         <span className={css.petMetaValue}>{pet.sex}</span>
                       </div>
                     </div>
-                    <div className={`${css.petMetaCol} ${css.petMetaColSpecies}`}>
+                    <div
+                      className={`${css.petMetaCol} ${css.petMetaColSpecies}`}
+                    >
                       <span className={css.petMetaLabel}>Species</span>
                       <span className={css.petMetaValue}>{pet.species}</span>
                     </div>
@@ -188,7 +246,11 @@ export default function ProfilePage() {
                     onClick={() => handleRemovePet(pet._id)}
                     aria-label="Remove pet"
                   >
-                    <svg width={16} height={16} style={{ flexShrink: 0, display: 'block' }}>
+                    <svg
+                      width={16}
+                      height={16}
+                      style={{flexShrink: 0, display: "block"}}
+                    >
                       <use href="/sprite/sprite.svg#icon-trash" />
                     </svg>
                   </button>
@@ -208,14 +270,14 @@ export default function ProfilePage() {
         <div className={css.myNotices}>
           <div className={css.tabRow}>
             <button
-              className={`${css.tab} ${activeTab === 'favorites' ? css.tabActive : ''}`}
-              onClick={() => setActiveTab('favorites')}
+              className={`${css.tab} ${activeTab === "favorites" ? css.tabActive : ""}`}
+              onClick={() => setActiveTab("favorites")}
             >
               My favorite pets
             </button>
             <button
-              className={`${css.tab} ${activeTab === 'viewed' ? css.tabActive : ''}`}
-              onClick={() => setActiveTab('viewed')}
+              className={`${css.tab} ${activeTab === "viewed" ? css.tabActive : ""}`}
+              onClick={() => setActiveTab("viewed")}
             >
               Viewed
             </button>
@@ -225,17 +287,17 @@ export default function ProfilePage() {
             <p className={css.emptyText}>No notices yet</p>
           ) : (
             <ul className={css.noticesList}>
-              {tabItems.map(notice => (
+              {tabItems.map((notice) => (
                 <li key={notice._id}>
                   <NoticeCard
                     notice={notice}
-                    showDelete={activeTab === 'favorites'}
+                    showDelete={activeTab === "favorites"}
                     onDelete={() => handleRemoveFavorite(notice._id)}
                     onLearnMore={() => handleLearnMore(notice._id)}
-                    isFavorite={favorites.some(f => f._id === notice._id)}
+                    isFavorite={favorites.some((f) => f._id === notice._id)}
                     onToggleFavorite={() => handleToggleFavorite(notice._id)}
                     isLoggedIn={isLoggedIn}
-                    hideActions={activeTab === 'viewed'}
+                    hideActions={activeTab === "viewed"}
                   />
                 </li>
               ))}
@@ -244,13 +306,15 @@ export default function ProfilePage() {
         </div>
       </div>
 
-      {showLogout && <ModalApproveAction onClose={() => setShowLogout(false)} />}
+      {showLogout && (
+        <ModalApproveAction onClose={() => setShowLogout(false)} />
+      )}
       {showEditUser && <ModalEditUser onClose={() => setShowEditUser(false)} />}
       {showCongrats && <ModalCongrats onClose={() => setShowCongrats(false)} />}
       {selectedNotice && (
         <ModalNotice
           notice={selectedNotice}
-          isFavorite={favorites.some(f => f._id === selectedNotice._id)}
+          isFavorite={favorites.some((f) => f._id === selectedNotice._id)}
           onClose={() => setSelectedNotice(null)}
           onToggleFavorite={() => handleToggleFavorite(selectedNotice._id)}
         />

@@ -1,6 +1,6 @@
 .content {
   width: 100%;
-  padding: 114px 20px 24px;
+  padding: 114px 20px 80px;
   background-color: var(--color-background);
 }
 
@@ -9,21 +9,22 @@
   font-weight: 700;
   color: var(--color-text);
   margin-bottom: 40px;
-  line-height: 1;
-  letter-spacing: -0.03rem;
+  line-height: 28px;
+  letter-spacing: -0.03em;
 }
 
 .card {
   background: var(--color-white);
-  width: 100%;
-  min-height: 184px;
+  width: 335px;
+  height: 184px;
   border-radius: 15px;
-  padding: 40px 25px 40px 20px;
-  margin-bottom: 20px;
+  padding: 40px 20px;
+  margin-bottom: 16px;
   display: flex;
   gap: 14px;
   align-items: flex-start;
   position: relative;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
 .logoCircle {
@@ -41,7 +42,7 @@
 .logoImg {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 50%;
 }
 
@@ -54,18 +55,22 @@
 }
 
 .partnerBody {
-  flex: 1;
-  min-width: 0;
-  padding-top: 0;
+  width: 196px;
+  min-height: 70px;
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
 .partnerName {
   font-size: 16px;
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 20px;
   letter-spacing: -0.04em;
   color: var(--color-text);
   margin-bottom: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .infoRow {
@@ -73,15 +78,19 @@
   gap: 4px;
   font-size: 14px;
   font-weight: 500;
-  line-height: 1.286;
+  line-height: 18px;
   letter-spacing: -0.02em;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   align-items: flex-start;
   color: var(--color-text);
 }
 
+.infoRow:last-child {
+  margin-bottom: 0;
+}
+
 .infoLabel {
-  color: rgba(38, 38, 38, .5);
+  color: rgba(38, 38, 38, 0.5);
   flex-shrink: 0;
 }
 
@@ -91,7 +100,9 @@
   font-weight: 500;
   line-height: 1.286;
   letter-spacing: -0.02em;
-  word-break: break-word;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .timeBadge {
@@ -102,11 +113,16 @@
   color: var(--color-primary);
   font-size: 12px;
   font-weight: 500;
-  line-height: 1.334;
+  line-height: 16px;
   letter-spacing: -0.02em;
+  width: 88px;
+  height: 32px;
   padding: 8px;
   border-radius: 30px;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .closedBadge {
@@ -117,17 +133,130 @@
   color: var(--color-close);
   font-size: 12px;
   font-weight: 500;
-  line-height: 1.334;
+  line-height: 16px;
   letter-spacing: -0.02em;
+  width: 88px;
+  height: 32px;
   padding: 8px;
   border-radius: 30px;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Tablet: 2-column grid ── */
+@media (min-width: 768px) {
+  .content {
+    padding: 167px 32px 80px;
+  }
+
+  .title {
+    font-size: 54px;
+    font-weight: 700;
+    line-height: 54px;
+    letter-spacing: -0.03em;
+    margin-bottom: 44px;
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .card {
+    margin-bottom: 0;
+    align-items: flex-start;
+    width: 342px;
+    height: 196px;
+    padding: 40px 20px;
+  }
+
+  .logoCircle {
+    width: 90px;
+    height: 90px;
+  }
+
+  .partnerBody {
+    padding-right: 0;
+    width: 196px;
+    min-height: 70px;
+    flex-shrink: 0;
+  }
+
+  .partnerName {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: -0.04em;
+    margin-bottom: 20px;
+  }
+
+  .infoRow {
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.02em;
+    overflow: hidden;
+  }
+
+  .infoVal {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .partnerName {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .timeBadge,
+  .closedBadge {
+    top: 12px;
+    right: 12px;
+    padding: 8px;
+    width: 100px;
+    height: 34px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.02em;
+    text-align: center;
+  }
+}
+
+/* ── Desktop: 3-column grid ── */
+@media (min-width: 1280px) {
+  .content {
+    padding-left: 64px;
+    padding-right: 64px;
+    padding-top: 178px;
+  }
+
+  .title {
+    margin-bottom: 60px;
+  }
+
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+    row-gap: 28px;
+  }
+
+  .card {
+    width: 371px;
+    height: 196px;
+  }
 }
 
 .loading {
   text-align: center;
   padding: 40px 20px;
-  color: rgba(38, 38, 38, .5);
+  color: rgba(38, 38, 38, 0.5);
   font-size: 14px;
 }
 
