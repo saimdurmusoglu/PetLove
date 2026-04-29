@@ -98,7 +98,7 @@ export default function ModalEditUser({ onClose }: Props) {
           ) : (
             <div className={css.avatarPlaceholder}>
               <svg className={css.avatarIcon} viewBox="0 0 20 20">
-                <use href="/sprite/sprite.svg#icon-user" />
+                <use href="/PetLove/sprite/sprite.svg#icon-user" />
               </svg>
             </div>
           )}
@@ -119,7 +119,7 @@ export default function ModalEditUser({ onClose }: Props) {
             <button type="button" className={css.uploadBtn}>
               Upload photo
               <svg width={16} height={16}>
-                <use href="/sprite/sprite.svg#icon-upload" />
+                <use href="/PetLove/sprite/sprite.svg#icon-upload" />
               </svg>
             </button>
           </div>

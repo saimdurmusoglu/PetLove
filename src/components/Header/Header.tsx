@@ -43,8 +43,8 @@ const Header = () => {
           <img
             src={
               isHome
-                ? "/images/logo-mobile-white.svg"
-                : "/images/logo-mobile.svg"
+                ? "/PetLove/images/logo-mobile-white.svg"
+                : "/PetLove/images/logo-mobile.svg"
             }
             alt="logo"
           />
@@ -109,7 +109,7 @@ const Header = () => {
               ) : (
                 <div className={styles.userIconBtn}>
                   <svg width={20} height={20} className={styles.userIcon}>
-                    <use href="/sprite/sprite.svg#icon-user" />
+                    <use href="/PetLove/sprite/sprite.svg#icon-user" />
                   </svg>
                 </div>
               )}
@@ -128,7 +128,7 @@ const Header = () => {
                 />
               ) : (
                 <svg width={20} height={20} className={styles.mobileUserIcon}>
-                  <use href="/sprite/sprite.svg#icon-user" />
+                  <use href="/PetLove/sprite/sprite.svg#icon-user" />
                 </svg>
               )}
             </Link>
@@ -140,8 +140,8 @@ const Header = () => {
               <use
                 href={
                   isHome
-                    ? "/sprite/sprite.svg#icon-burger-white"
-                    : "/sprite/sprite.svg#icon-burger"
+                    ? "/PetLove/sprite/sprite.svg#icon-burger-white"
+                    : "/PetLove/sprite/sprite.svg#icon-burger"
                 }
               />
             </svg>
@@ -206,7 +206,7 @@ const Header = () => {
                   ) : (
                     <div className={styles.userIconBtn}>
                       <svg width={20} height={20} className={styles.userIcon}>
-                        <use href="/sprite/sprite.svg#icon-user" />
+                        <use href="/PetLove/sprite/sprite.svg#icon-user" />
                       </svg>
                     </div>
                   )}

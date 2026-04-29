@@ -42,7 +42,7 @@ const ModalNotice = ({
           aria-label="Close"
         >
           <svg width={14} height={14}>
-            <use href="/sprite/sprite.svg#icon-cross-small" />
+            <use href="/PetLove/sprite/sprite.svg#icon-cross-small" />
           </svg>
         </button>
 
@@ -65,7 +65,7 @@ const ModalNotice = ({
               height={16}
               className={i < filledStars ? styles.starFilled : styles.starEmpty}
             >
-              <use href="/sprite/sprite.svg#icon-star" />
+              <use href="/PetLove/sprite/sprite.svg#icon-star" />
             </svg>
           ))}
           <span className={styles.popularityCount}>{notice.popularity}</span>

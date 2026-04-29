@@ -42,8 +42,8 @@ const ModalCongrats = ({ onClose }: ModalCongratsProps) => {
 
         <div className={styles.imageWrap}>
           <img
-            src="/images/cat@1x.png"
-            srcSet="/images/cat@1x.png 1x, /images/cat@2x.png 2x"
+            src="/PetLove/images/cat@1x.png"
+            srcSet="/PetLove/images/cat@1x.png 1x, /images/cat@2x.png 2x"
             alt="Congrats cat"
             className={styles.catImg}
           />

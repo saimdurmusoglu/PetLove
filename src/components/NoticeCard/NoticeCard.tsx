@@ -54,7 +54,7 @@ export default function NoticeCard({
           <h3 className={css.cardTitle}>{notice.title}</h3>
           <div className={css.popularityBadge}>
             <svg width={16} height={16} className={css.starIcon}>
-              <use href="/sprite/sprite.svg#icon-star" />
+              <use href="/PetLove/sprite/sprite.svg#icon-star" />
             </svg>
             <span>{notice.popularity}</span>
           </div>
@@ -105,7 +105,7 @@ export default function NoticeCard({
                 aria-label="Delete"
               >
                 <svg width={20} height={20}>
-                  <use href="/sprite/sprite.svg#icon-trash" />
+                  <use href="/PetLove/sprite/sprite.svg#icon-trash" />
                 </svg>
               </button>
             ) : (
@@ -115,7 +115,7 @@ export default function NoticeCard({
                 aria-label="Toggle favorite"
               >
                 <svg width={18} height={18}>
-                  <use href="/sprite/sprite.svg#icon-heart" />
+                  <use href="/PetLove/sprite/sprite.svg#icon-heart" />
                 </svg>
               </button>
             ))}

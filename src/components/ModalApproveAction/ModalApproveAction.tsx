@@ -43,8 +43,8 @@ export default function ModalApproveAction({ onClose }: Props) {
 
         <div className={css.imageWrap}>
           <img
-            src="/images/cat@1x.png"
-            srcSet="/images/cat@1x.png 1x, /images/cat@2x.png 2x"
+            src="/PetLove/images/cat@1x.png"
+            srcSet="/PetLove/images/cat@1x.png 1x, /images/cat@2x.png 2x"
             alt="Already leaving?"
             className={css.catImg}
           />

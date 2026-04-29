@@ -36,7 +36,7 @@ const ModalAttention = ({ onClose }: ModalAttentionProps) => {
           aria-label="Close"
         >
           <svg width={14} height={14}>
-            <use href="/sprite/sprite.svg#icon-cross-small" />
+            <use href="/PetLove/sprite/sprite.svg#icon-cross-small" />
           </svg>
         </button>
 

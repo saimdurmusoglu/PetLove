@@ -11,8 +11,8 @@ export default function NotFoundPage() {
           <span className={css.number}>4</span>
           <div className={css.imageWrap}>
             <img
-              src="/images/404-image@1x.png"
-              srcSet="/images/404-image@1x.png 1x, /images/404-image@2x.png 2x"
+              src="/PetLove/images/404-image@1x.png"
+              srcSet="/PetLove/images/404-image@1x.png 1x, /images/404-image@2x.png 2x"
               alt="404 cat"
               className={css.catImg}
             />

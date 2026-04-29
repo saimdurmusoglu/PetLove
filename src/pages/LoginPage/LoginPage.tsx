@@ -66,23 +66,23 @@ const LoginPage = () => {
     <main className={`${styles.main} container`}>
       <div className={styles.petBlock}>
         <img
-          src="/images/login-rectangle@1x.png"
-          srcSet="/images/login-rectangle@2x.png 2x"
+          src="/PetLove/images/login-rectangle@1x.png"
+          srcSet="/PetLove/images/login-rectangle@2x.png 2x"
           alt=""
           className={styles.rectangle}
         />
         <picture>
           <source
             media="(min-width: 1280px)"
-            srcSet="/images/login-pet-desktop@1x.png 1x, /images/login-pet-desktop@2x.png 2x"
+            srcSet="/PetLove/images/login-pet-desktop@1x.png 1x, /images/login-pet-desktop@2x.png 2x"
           />
           <source
             media="(min-width: 768px)"
-            srcSet="/images/login-pet-tablet@1x.png 1x, /images/login-pet-tablet@2x.png 2x"
+            srcSet="/PetLove/images/login-pet-tablet@1x.png 1x, /images/login-pet-tablet@2x.png 2x"
           />
           <img
-            src="/images/login-pet-mobile@1x.png"
-            srcSet="/images/login-pet-mobile@2x.png 2x"
+            src="/PetLove/images/login-pet-mobile@1x.png"
+            srcSet="/PetLove/images/login-pet-mobile@2x.png 2x"
             alt="dog"
             className={styles.pet}
           />
@@ -90,8 +90,8 @@ const LoginPage = () => {
         <div className={styles.informCard}>
           <div className={styles.avatar}>
             <img
-              src="/images/dog@1x.png"
-              srcSet="/images/dog@2x.png 2x"
+              src="/PetLove/images/dog@1x.png"
+              srcSet="/PetLove/images/dog@2x.png 2x"
               alt=""
               className={styles.avatarImg}
             />
@@ -130,13 +130,13 @@ const LoginPage = () => {
               <>
                 <span className={styles.errorMsg}>{errors.email.message}</span>
                 <svg width={18} height={18} className={styles.iconError}>
-                  <use href="/sprite/sprite.svg#icon-cross" />
+                  <use href="/PetLove/sprite/sprite.svg#icon-cross" />
                 </svg>
               </>
             )}
             {!errors.email && touchedFields.email && (
               <svg width={18} height={18} className={styles.iconSuccess}>
-                <use href="/sprite/sprite.svg#icon-check" />
+                <use href="/PetLove/sprite/sprite.svg#icon-check" />
               </svg>
             )}
           </div>
@@ -150,7 +150,7 @@ const LoginPage = () => {
             />
             {!errors.password && touchedFields.password && (
               <svg width={18} height={18} className={styles.iconSuccess}>
-                <use href="/sprite/sprite.svg#icon-check" />
+                <use href="/PetLove/sprite/sprite.svg#icon-check" />
               </svg>
             )}
             <svg

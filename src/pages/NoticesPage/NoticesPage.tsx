@@ -248,13 +248,13 @@ export default function NoticesPage() {
                 onClick={handleClearSearch}
               >
                 <svg width={16} height={16}>
-                  <use href="/sprite/sprite.svg#icon-cross-small" />
+                  <use href="/PetLove/sprite/sprite.svg#icon-cross-small" />
                 </svg>
               </button>
             )}
             <button type="submit" className={styles.searchIconBtn}>
               <svg width={18} height={18}>
-                <use href="/sprite/sprite.svg#icon-search" />
+                <use href="/PetLove/sprite/sprite.svg#icon-search" />
               </svg>
             </button>
           </form>
@@ -275,7 +275,7 @@ export default function NoticesPage() {
                     isCategoryOpen ? styles.chevronOpen : styles.chevron
                   }
                 >
-                  <use href="/sprite/sprite.svg#icon-chevron-down" />
+                  <use href="/PetLove/sprite/sprite.svg#icon-chevron-down" />
                 </svg>
               </button>
               {isCategoryOpen && (
@@ -321,7 +321,7 @@ export default function NoticesPage() {
                   height={16}
                   className={isSexOpen ? styles.chevronOpen : styles.chevron}
                 >
-                  <use href="/sprite/sprite.svg#icon-chevron-down" />
+                  <use href="/PetLove/sprite/sprite.svg#icon-chevron-down" />
                 </svg>
               </button>
               {isSexOpen && (
@@ -368,7 +368,7 @@ export default function NoticesPage() {
                 height={16}
                 className={isSpeciesOpen ? styles.chevronOpen : styles.chevron}
               >
-                <use href="/sprite/sprite.svg#icon-chevron-down" />
+                <use href="/PetLove/sprite/sprite.svg#icon-chevron-down" />
               </svg>
             </button>
             {isSpeciesOpen && (
@@ -424,13 +424,13 @@ export default function NoticesPage() {
             {locationInput && (
               <button className={styles.clearBtn} onClick={handleLocationClear}>
                 <svg width={16} height={16}>
-                  <use href="/sprite/sprite.svg#icon-cross-small" />
+                  <use href="/PetLove/sprite/sprite.svg#icon-cross-small" />
                 </svg>
               </button>
             )}
             <button className={styles.searchIconBtn}>
               <svg width={18} height={18}>
-                <use href="/sprite/sprite.svg#icon-search" />
+                <use href="/PetLove/sprite/sprite.svg#icon-search" />
               </svg>
             </button>
             {showSuggestions && locationSuggestions.length > 0 && (
@@ -527,7 +527,7 @@ export default function NoticesPage() {
                 disabled={page === 1}
               >
                 <svg width={20} height={20}>
-                  <use href="/sprite/sprite.svg#icon-left-double-mobile" />
+                  <use href="/PetLove/sprite/sprite.svg#icon-left-double-mobile" />
                 </svg>
               </button>
               <button
@@ -536,7 +536,7 @@ export default function NoticesPage() {
                 disabled={page === 1}
               >
                 <svg width={20} height={20}>
-                  <use href="/sprite/sprite.svg#icon-left-mobile" />
+                  <use href="/PetLove/sprite/sprite.svg#icon-left-mobile" />
                 </svg>
               </button>
             </div>
@@ -597,7 +597,7 @@ export default function NoticesPage() {
                 disabled={page === totalPages}
               >
                 <svg width={20} height={20}>
-                  <use href="/sprite/sprite.svg#icon-right-mobile" />
+                  <use href="/PetLove/sprite/sprite.svg#icon-right-mobile" />
                 </svg>
               </button>
               <button
@@ -606,7 +606,7 @@ export default function NoticesPage() {
                 disabled={page === totalPages}
               >
                 <svg width={20} height={20}>
-                  <use href="/sprite/sprite.svg#icon-right-double-mobile" />
+                  <use href="/PetLove/sprite/sprite.svg#icon-right-double-mobile" />
                 </svg>
               </button>
             </div>

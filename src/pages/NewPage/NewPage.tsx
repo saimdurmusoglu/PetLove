@@ -61,13 +61,13 @@ export default function NewPage() {
               }}
             >
               <svg width={16} height={16}>
-                <use href="/sprite/sprite.svg#icon-cross-small" />
+                <use href="/PetLove/sprite/sprite.svg#icon-cross-small" />
               </svg>
             </button>
           )}
           <button type="submit" className={styles.searchBtn}>
             <svg width="18" height="18">
-              <use href="/sprite/sprite.svg#icon-search" />
+              <use href="/PetLove/sprite/sprite.svg#icon-search" />
             </svg>
           </button>
         </form>
@@ -108,7 +108,7 @@ export default function NewPage() {
             disabled={page === 1}
           >
             <svg width="20" height="20">
-              <use href="/sprite/sprite.svg#icon-left-double-mobile" />
+              <use href="/PetLove/sprite/sprite.svg#icon-left-double-mobile" />
             </svg>
           </button>
           <button
@@ -117,7 +117,7 @@ export default function NewPage() {
             disabled={page === 1}
           >
             <svg width="20" height="20">
-              <use href="/sprite/sprite.svg#icon-left-mobile" />
+              <use href="/PetLove/sprite/sprite.svg#icon-left-mobile" />
             </svg>
           </button>
         </div>
@@ -176,7 +176,7 @@ export default function NewPage() {
             disabled={page === totalPages}
           >
             <svg width="20" height="20">
-              <use href="/sprite/sprite.svg#icon-right-mobile" />
+              <use href="/PetLove/sprite/sprite.svg#icon-right-mobile" />
             </svg>
           </button>
           <button
@@ -185,7 +185,7 @@ export default function NewPage() {
             disabled={page === totalPages}
           >
             <svg width="20" height="20">
-              <use href="/sprite/sprite.svg#icon-right-double-mobile" />
+              <use href="/PetLove/sprite/sprite.svg#icon-right-double-mobile" />
             </svg>
           </button>
         </div>

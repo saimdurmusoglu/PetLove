@@ -144,23 +144,23 @@ export default function AddPetPage() {
     <main className={styles.main}>
       <div className={styles.heroWrap}>
         <img
-          src="/images/login-rectangle@1x.png"
-          srcSet="/images/login-rectangle@2x.png 2x"
+          src="/PetLove/images/login-rectangle@1x.png"
+          srcSet="/PetLove/images/login-rectangle@2x.png 2x"
           alt=""
           className={styles.rectangle}
         />
         <picture>
           <source
             media="(min-width: 1280px)"
-            srcSet="/images/add-pet-desktop@1x.png 1x, /images/add-pet-desktop@2x.png 2x"
+            srcSet="/PetLove/images/add-pet-desktop@1x.png 1x, /images/add-pet-desktop@2x.png 2x"
           />
           <source
             media="(min-width: 768px)"
-            srcSet="/images/add-pet-tablet@1x.png 1x, /images/add-pet-tablet@2x.png 2x"
+            srcSet="/PetLove/images/add-pet-tablet@1x.png 1x, /images/add-pet-tablet@2x.png 2x"
           />
           <img
-            src="/images/add-pet-mobile@1x.png"
-            srcSet="/images/add-pet-mobile@1x.png 1x, /images/add-pet-mobile@2x.png 2x"
+            src="/PetLove/images/add-pet-mobile@1x.png"
+            srcSet="/PetLove/images/add-pet-mobile@1x.png 1x, /images/add-pet-mobile@2x.png 2x"
             alt=""
             className={styles.heroImg}
           />
@@ -244,7 +244,7 @@ export default function AddPetPage() {
                   className={styles.previewIcon}
                   aria-hidden="true"
                 >
-                  <use href="/sprite/sprite.svg#icon-paw" />
+                  <use href="/PetLove/sprite/sprite.svg#icon-paw" />
                 </svg>
               </div>
             )}
@@ -266,7 +266,7 @@ export default function AddPetPage() {
             <button type="button" className={styles.uploadBtn}>
               Upload photo
               <svg className={styles.uploadIcon}>
-                <use href="/sprite/sprite.svg#icon-upload" />
+                <use href="/PetLove/sprite/sprite.svg#icon-upload" />
               </svg>
             </button>
           </div>
@@ -347,7 +347,7 @@ export default function AddPetPage() {
                 className={styles.calendarIcon}
                 aria-hidden="true"
               >
-                <use href="/sprite/sprite.svg#icon-calendar" />
+                <use href="/PetLove/sprite/sprite.svg#icon-calendar" />
               </svg>
               {errors.birthday && (
                 <span className={styles.errorMsg}>
@@ -370,7 +370,7 @@ export default function AddPetPage() {
                     isSpeciesOpen ? styles.chevronOpen : styles.chevron
                   }
                 >
-                  <use href="/sprite/sprite.svg#icon-chevron-down" />
+                  <use href="/PetLove/sprite/sprite.svg#icon-chevron-down" />
                 </svg>
               </button>
               {isSpeciesOpen && (

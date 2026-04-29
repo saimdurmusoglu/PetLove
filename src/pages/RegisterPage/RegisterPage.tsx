@@ -81,23 +81,23 @@ const RegisterPage = () => {
     <main className={`${styles.main} container`}>
       <div className={styles.petBlock}>
         <img
-          src="/images/register-rectangl@1x.png"
-          srcSet="/images/register-rectangele@2x.png 2x"
+          src="/PetLove/images/register-rectangl@1x.png"
+          srcSet="/PetLove/images/register-rectangele@2x.png 2x"
           alt=""
           className={styles.rectangle}
         />
         <picture>
           <source
             media="(min-width: 1280px)"
-            srcSet="/images/register-pet-desktop@1x.png 1x, /images/register-pet-desktop@2x.png 2x"
+            srcSet="/PetLove/images/register-pet-desktop@1x.png 1x, /images/register-pet-desktop@2x.png 2x"
           />
           <source
             media="(min-width: 768px)"
-            srcSet="/images/register-pet-tablet@1x.png 1x, /images/register-pet-tablet@2x.png 2x"
+            srcSet="/PetLove/images/register-pet-tablet@1x.png 1x, /images/register-pet-tablet@2x.png 2x"
           />
           <img
-            src="/images/register-pet-mobile@1x.png"
-            srcSet="/images/register-pet-mobile@2x.png 2x"
+            src="/PetLove/images/register-pet-mobile@1x.png"
+            srcSet="/PetLove/images/register-pet-mobile@2x.png 2x"
             alt="cat"
             className={styles.pet}
           />
@@ -105,8 +105,8 @@ const RegisterPage = () => {
         <div className={styles.informCard}>
           <div className={styles.avatar}>
             <img
-              src="/images/cat@1x.png"
-              srcSet="/images/cat@2x.png 2x"
+              src="/PetLove/images/cat@1x.png"
+              srcSet="/PetLove/images/cat@2x.png 2x"
               alt=""
               className={styles.avatarImg}
             />
@@ -144,13 +144,13 @@ const RegisterPage = () => {
               <>
                 <span className={styles.errorMsg}>{errors.name.message}</span>
                 <svg width={18} height={18} className={styles.iconError}>
-                  <use href="/sprite/sprite.svg#icon-cross" />
+                  <use href="/PetLove/sprite/sprite.svg#icon-cross" />
                 </svg>
               </>
             )}
             {!errors.name && touchedFields.name && (
               <svg width={18} height={18} className={styles.iconSuccess}>
-                <use href="/sprite/sprite.svg#icon-check" />
+                <use href="/PetLove/sprite/sprite.svg#icon-check" />
               </svg>
             )}
           </div>
@@ -166,13 +166,13 @@ const RegisterPage = () => {
               <>
                 <span className={styles.errorMsg}>{errors.email.message}</span>
                 <svg width={18} height={18} className={styles.iconError}>
-                  <use href="/sprite/sprite.svg#icon-cross" />
+                  <use href="/PetLove/sprite/sprite.svg#icon-cross" />
                 </svg>
               </>
             )}
             {!errors.email && touchedFields.email && (
               <svg width={18} height={18} className={styles.iconSuccess}>
-                <use href="/sprite/sprite.svg#icon-check" />
+                <use href="/PetLove/sprite/sprite.svg#icon-check" />
               </svg>
             )}
           </div>
@@ -186,7 +186,7 @@ const RegisterPage = () => {
             />
             {!errors.password && touchedFields.password && (
               <svg width={18} height={18} className={styles.iconSuccess}>
-                <use href="/sprite/sprite.svg#icon-check" />
+                <use href="/PetLove/sprite/sprite.svg#icon-check" />
               </svg>
             )}
             <svg
@@ -213,7 +213,7 @@ const RegisterPage = () => {
             />
             {!errors.confirmPassword && touchedFields.confirmPassword && (
               <svg width={18} height={18} className={styles.iconSuccess}>
-                <use href="/sprite/sprite.svg#icon-check" />
+                <use href="/PetLove/sprite/sprite.svg#icon-check" />
               </svg>
             )}
             <svg

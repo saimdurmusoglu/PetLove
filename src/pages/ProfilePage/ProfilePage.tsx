@@ -107,7 +107,7 @@ export default function ProfilePage() {
                 height={16}
                 style={{ filter: "brightness(0) invert(1)" }}
               >
-                <use href="/sprite/sprite.svg#icon-user" />
+                <use href="/PetLove/sprite/sprite.svg#icon-user" />
               </svg>
             </div>
             <button
@@ -116,7 +116,7 @@ export default function ProfilePage() {
               aria-label="Edit profile"
             >
               <svg width={16} height={16}>
-                <use href="/sprite/sprite.svg#icon-edit" />
+                <use href="/PetLove/sprite/sprite.svg#icon-edit" />
               </svg>
             </button>
           </div>
@@ -142,7 +142,7 @@ export default function ProfilePage() {
                     viewBox="0 0 20 20"
                     className={css.avatarIcon}
                   >
-                    <use href="/sprite/sprite.svg#icon-user" />
+                    <use href="/PetLove/sprite/sprite.svg#icon-user" />
                   </svg>
                 </div>
               )}
@@ -210,7 +210,7 @@ export default function ProfilePage() {
                   ) : (
                     <div className={css.petImgPlaceholder}>
                       <svg width={24} height={24}>
-                        <use href="/sprite/sprite.svg#icon-pawprint" />
+                        <use href="/PetLove/sprite/sprite.svg#icon-pawprint" />
                       </svg>
                     </div>
                   )}
@@ -251,7 +251,7 @@ export default function ProfilePage() {
                       height={16}
                       style={{ flexShrink: 0, display: "block" }}
                     >
-                      <use href="/sprite/sprite.svg#icon-trash" />
+                      <use href="/PetLove/sprite/sprite.svg#icon-trash" />
                     </svg>
                   </button>
                 </li>
