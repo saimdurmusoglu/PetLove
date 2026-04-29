@@ -122,3 +122,42 @@
 .registerBtn:hover {
   background: var(--color-button-hover-2);
 }
+
+@media (min-width: 768px) {
+  .modal {
+    max-width: 480px;
+    padding: 56px 48px 48px;
+    min-height: unset;
+  }
+
+  .closeBtn {
+    top: 24px;
+    right: 24px;
+  }
+
+  .iconWrap {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 28px;
+  }
+
+  .emoji {
+    font-size: 54px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .text {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  .loginBtn,
+  .registerBtn {
+    height: 52px;
+    font-size: 16px;
+  }
+}

@@ -77,7 +77,8 @@
   display: block;
   width: 44px;
   height: 44px;
-  filter: brightness(0) saturate(100%) invert(73%) sepia(60%) saturate(600%) hue-rotate(1deg) brightness(105%);
+  filter: brightness(0) saturate(100%) invert(73%) sepia(60%) saturate(600%)
+    hue-rotate(1deg) brightness(105%);
 }
 
 .form {
@@ -182,4 +183,42 @@
 
 .submitBtn:hover {
   background: var(--color-button-hover);
+}
+
+@media (min-width: 768px) {
+  .modal {
+    max-width: 480px;
+    padding: 40px 48px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .avatarPreview,
+  .avatarPlaceholder {
+    width: 100px;
+    height: 100px;
+  }
+
+  .avatarIcon {
+    width: 54px;
+    height: 54px;
+  }
+
+  .input {
+    height: 52px;
+    font-size: 16px;
+  }
+
+  .uploadBtn {
+    height: 52px;
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+
+  .submitBtn {
+    height: 52px;
+    font-size: 16px;
+  }
 }

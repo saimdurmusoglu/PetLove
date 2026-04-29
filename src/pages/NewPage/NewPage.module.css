@@ -167,7 +167,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid rgba(129, 56, 56, 0.20);
+  border: 1px solid rgba(129, 56, 56, 0.2);
   background: transparent;
   cursor: pointer;
   font-size: 14px;
@@ -194,7 +194,7 @@
 .pageBtn:focus:not(:hover):not(.active) {
   background: transparent;
   color: rgba(38, 38, 38, 0.5);
-  border-color: rgba(129, 56, 56, 0.20);
+  border-color: rgba(129, 56, 56, 0.2);
 }
 
 .pageBtn.active {
@@ -255,14 +255,14 @@
 /* tablet 768px */
 @media (min-width: 768px) {
   .main {
-    padding: 167px 32px 100px;
+    padding: 120px 32px 100px;
     max-width: 768px;
     margin: 0 auto;
   }
 
   .titleRow {
     flex-direction: row;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
     margin-bottom: 32px;
   }
@@ -293,13 +293,13 @@
 /* desktop 1280px */
 @media (min-width: 1280px) {
   .main {
-    padding: 178px 64px 100px;
+    padding: 120px 64px 100px;
     max-width: 1280px;
     margin: 0 auto;
   }
 
   .titleRow {
-    align-items: flex-start;
+    align-items: flex-end;
   }
 
   .title {

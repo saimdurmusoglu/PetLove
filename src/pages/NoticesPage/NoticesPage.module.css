@@ -93,7 +93,6 @@
   gap: 8px;
 }
 
-
 .divider {
   width: 100%;
   height: 1px;
@@ -257,7 +256,6 @@
   align-items: center;
 }
 
-
 /* List */
 .list {
   list-style: none;
@@ -273,6 +271,25 @@
 }
 
 @media (min-width: 768px) {
+  .main {
+    padding: 167px 0px 88px;
+  }
+
+  .title {
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+
+  .filterCard {
+    padding: 24px;
+    gap: 8px;
+  }
+
+  .selectRow {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
   .list {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -280,11 +297,78 @@
 }
 
 @media (min-width: 1280px) {
+  .main {
+    padding: 120px 0px 88px;
+  }
+
+  .title {
+    font-size: 54px;
+    margin-bottom: 40px;
+  }
+
+  /* Desktop: filterCard 2 satır
+     1. satır: search | category | by gender | by type | location
+     2. satır: sort pills */
+  .filterCard {
+    display: grid;
+    grid-template-columns: 1fr 160px 160px 160px 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    padding: 20px 24px;
+    gap: 8px;
+  }
+
+  /* 1. satır: keyword search */
+  .filterCard > .searchRow:first-child {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  /* selectRow (Category + By gender) — 2 ayrı hücreye yay */
+  .selectRow {
+    display: contents;
+  }
+
+  .selectRow > .selectWrapper:nth-child(1) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .selectRow > .selectWrapper:nth-child(2) {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  /* By type (species) */
+  .filterCard > .selectWrapper {
+    grid-column: 4;
+    grid-row: 1;
+  }
+
+  /* Location search */
+  .filterCard > .searchRow:last-of-type {
+    grid-column: 5;
+    grid-row: 1;
+  }
+
+  /* Divider — 2. satır, tam genişlik */
+  .divider {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin: 0;
+  }
+
+  /* Sort pills — 3. satır */
+  .sortRow {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    margin-top: 0;
+  }
+
   .list {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
 
 /* Loading / Empty */
 .loading {
@@ -322,7 +406,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid rgba(129, 56, 56, 0.20);
+  border: 1px solid rgba(129, 56, 56, 0.2);
   background: transparent;
   cursor: pointer;
   font-size: 14px;

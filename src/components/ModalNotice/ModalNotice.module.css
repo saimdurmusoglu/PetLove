@@ -226,3 +226,65 @@
 .contactBtn:hover {
   background: var(--color-button-hover-2);
 }
+
+@media (min-width: 768px) {
+  .modal {
+    max-width: 480px;
+    padding: 56px 48px 48px;
+    min-height: unset;
+  }
+
+  .closeBtn {
+    top: 24px;
+    right: 24px;
+  }
+
+  .avatarWrap {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 28px;
+  }
+
+  .avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+
+  .popularityRow {
+    margin-bottom: 32px;
+  }
+
+  .metaGrid {
+    gap: 8px 32px;
+    margin-bottom: 20px;
+  }
+
+  .metaLabel {
+    font-size: 12px;
+  }
+
+  .metaValue {
+    font-size: 14px;
+  }
+
+  .comment {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  .price {
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+
+  .favoriteBtn,
+  .contactBtn {
+    height: 52px;
+    font-size: 16px;
+  }
+}

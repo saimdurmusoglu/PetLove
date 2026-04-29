@@ -4,11 +4,23 @@
 }
 
 .heroWrap {
+  width: 100%;
   height: 213px;
   border-radius: 30px;
   background: var(--color-primary);
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
+}
+
+.rectangle {
+  position: absolute;
+  top: 22px;
+  left: 13px;
+  width: 332px;
+  height: 414px;
+  z-index: 0;
+  object-fit: fill;
+  opacity: 0.5;
 }
 
 .heroImg {
@@ -16,9 +28,70 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 297px;
+  width: auto;
+  max-width: 100%;
   height: 248px;
   object-fit: contain;
+  object-position: top center;
+  z-index: 1;
+}
+
+@media (max-width: 374px) {
+  .heroImg {
+    top: auto;
+    bottom: 0;
+    object-position: bottom center;
+  }
+
+  .main {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .title {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .titleSub {
+    font-size: 6px;
+  }
+
+  .formWrap {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .bottomRow {
+    gap: 4px;
+  }
+
+  .dateInput {
+    width: 122px;
+    height: 36px;
+    font-size: 11px;
+    padding: 8px 24px 8px 8px;
+  }
+
+  .selectTrigger {
+    width: 122px;
+    height: 36px;
+    font-size: 11px;
+    padding: 0 6px;
+  }
+
+  .selectTrigger span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .chevron,
+  .chevronOpen {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+  }
 }
 
 .formWrap {
@@ -137,6 +210,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 16px;
+  align-self: center;
 }
 
 .previewImg {
@@ -335,7 +409,7 @@
 }
 
 .urlInput {
-  width: 170px;
+  width: 100%;
   height: 36px;
   border-radius: 30px;
   border: 1px solid var(--color-border-input);
@@ -551,4 +625,256 @@
 
 .submitBtn:hover {
   background: var(--color-button-hover);
+}
+
+.sexAndPreviewRow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+/* tablet 768px */
+@media (min-width: 768px) {
+  .main {
+    padding: 114px 32px 32px;
+    max-width: 768px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .heroWrap {
+    width: 100%;
+    height: 248px;
+    border-radius: 60px;
+    flex-shrink: 0;
+    overflow: visible;
+  }
+
+  .rectangle {
+    top: 22px;
+    left: 106px;
+    width: 572px;
+    height: 715px;
+    /* opacity: 0.45; */
+    object-fit: fill;
+    z-index: 0;
+  }
+
+  .heroImg {
+    width: 297px;
+    height: 248px;
+    top: 0;
+    left: 204px;
+    transform: none;
+    object-fit: cover;
+    object-position: top;
+    z-index: 1;
+  }
+
+  .formWrap {
+    margin-top: 0;
+    padding: 40px 136px;
+    border-radius: 60px;
+    width: 704px;
+    min-height: 614px;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 40px;
+  }
+
+  .titleSub {
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: 0;
+  }
+
+  /* Sex butonları + avatar preview yan yana */
+  .sexAndPreviewRow {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .sexRow {
+    margin-bottom: 0;
+    gap: 8px;
+  }
+
+  .sexBtn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .avatarPreview {
+    margin-top: -24px;
+    margin-left: 173px;
+    margin-bottom: 0;
+  }
+
+  .previewImg,
+  .previewPlaceholder { 
+    width: 86px;
+    height: 86px;
+  }
+
+  .form {
+    gap: 18px;
+  }
+
+  .urlInput {
+    width: 100%;
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .uploadBtn {
+    height: 42px;
+    font-size: 12px;
+    padding: 10px 16px;
+    white-space: nowrap;
+  }
+
+  .input {
+    height: 52px;
+    font-size: 14px;
+  }
+
+  .dateInput {
+    width: 100%;
+    height: 52px;
+    font-size: 14px;
+  }
+
+  .selectTrigger {
+    height: 52px;
+    font-size: 14px;
+  }
+
+  .btnRow {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  .backBtn,
+  .submitBtn {
+    width: 170px;
+    height: 48px;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+  }
+}
+
+/* desktop 1280px */
+@media (min-width: 1280px) {
+  .main {
+    padding: 114px 32px 32px;
+    max-width: 1280px;
+    margin: 0 auto;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 32px;
+  }
+
+  .heroWrap {
+    width: 592px;
+    height: 654px;
+    flex-shrink: 0;
+    border-radius: 60px;
+    overflow: visible;
+  }
+
+  .rectangle {
+    top: 22px;
+    left: 16px;
+    width: 572px;
+    height: 715px;
+    object-fit: fill;
+    border-radius: 0;
+    z-index: 0;
+    /* opacity: 0.5; */
+  }
+
+  .heroImg {
+    width: 512px;
+    height: 648px;
+    top: 6px;
+    left: 40px;
+    transform: none;
+    object-fit: contain;
+    object-position: top;
+    z-index: 1;
+  }
+
+  .formWrap {
+    flex: 1;
+    margin-top: 0;
+    padding: 60px 80px;
+    border-radius: 60px;
+    height: 654px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 40px;
+  }
+
+  .titleSub {
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: 0;
+  }
+
+  .form {
+    gap: 18px;
+  }
+
+  .urlInput {
+    height: 42px;
+  }
+
+  .input {
+    height: 52px;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+  }
+
+  .dateInput {
+    height: 52px;
+    width: 100%;
+  }
+
+  .selectTrigger {
+    height: 52px;
+  }
+
+  .btnRow {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  .backBtn,
+  .submitBtn {
+    width: 170px;
+    height: 48px;
+    margin-right: 0;
+  }
 }
