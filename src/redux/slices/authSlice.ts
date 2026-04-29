@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { api } from '../../services/api';
+import { firebaseLogin, firebaseRegister, firebaseSignOut } from '../../services/firebase';
 
 export interface Pet {
   _id: string;
@@ -59,11 +60,12 @@ export const loginUser = createAsyncThunk(
   'auth/login',
   async (credentials: { email: string; password: string }, { rejectWithValue }) => {
     try {
+      await firebaseLogin(credentials.email, credentials.password);
       const { data } = await api.post('/users/signin', credentials);
       return data;
     } catch (error) {
-      const e = error as { response?: { data?: { message?: string } } };
-      return rejectWithValue(e.response?.data?.message || 'Login failed');
+      const e = error as { response?: { data?: { message?: string } }; message?: string };
+      return rejectWithValue(e.response?.data?.message || e.message || 'Login failed');
     }
   }
 );
@@ -72,11 +74,12 @@ export const registerUser = createAsyncThunk(
   'auth/register',
   async (credentials: { name: string; email: string; password: string }, { rejectWithValue }) => {
     try {
+      await firebaseRegister(credentials.email, credentials.password);
       const { data } = await api.post('/users/signup', credentials);
       return data;
     } catch (error) {
-      const e = error as { response?: { data?: { message?: string } } };
-      return rejectWithValue(e.response?.data?.message || 'Registration failed');
+      const e = error as { response?: { data?: { message?: string } }; message?: string };
+      return rejectWithValue(e.response?.data?.message || e.message || 'Registration failed');
     }
   }
 );
@@ -127,6 +130,7 @@ export const signOut = createAsyncThunk(
   'auth/signOut',
   async (_, { rejectWithValue }) => {
     try {
+      await firebaseSignOut();
       await api.post('/users/signout');
     } catch (error) {
       const e = error as { response?: { data?: { message?: string } } };

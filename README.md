@@ -1,73 +1,103 @@
-# React + TypeScript + Vite
+# PetLove 🐾
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+PetLove is a responsive web application for pet lovers — browse pet adoption notices, manage your own pets, read the latest news, and find nearby pet-friendly services.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+🔗 [PetLove on Netlify / GitHub Pages](#) ← _deploy linkini buraya ekle_
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Authentication** — register, login, logout with persistent session (JWT)
+- **Notices** — browse and filter pet adoption listings by category, species, sex, location, and price
+- **Favorites** — save and manage your favorite notices (requires login)
+- **Profile** — view and edit your profile, upload avatar, manage your own pets
+- **Add Pet** — add a new pet with photo, species, birthday, and sex
+- **News** — latest pet-related news feed
+- **Friends** — discover nearby pet-friendly places with working hours and contact info
+- **404 Page** — custom not-found page
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Category | Technology |
+|---|---|
+| Framework | React 19 |
+| Language | TypeScript |
+| Bundler | Vite |
+| State Management | Redux Toolkit |
+| Routing | React Router DOM v7 |
+| Forms | React Hook Form + Yup |
+| HTTP | Axios |
+| Styling | CSS Modules |
+| UI Extras | React Toastify, React Datepicker, React Select |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Design
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+🎨 [Figma Design](#) ← _tasarım linkini buraya ekle_
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Technical Specification
+
+📄 [Technical Specification](#) ← _teknik görev linkini buraya ekle_
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/<your-username>/petlove.git
+cd petlove
+
+# Install dependencies
+npm install
+
+# Create environment file
+cp .env.example .env
+# Fill in your credentials in .env
+
+# Start development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Build
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm run build
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Preview production build
+
+```bash
+npm run preview
+```
+
+## Environment Variables
+
+Create a `.env` file based on `.env.example`:
+
+```
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_STORAGE_BUCKET=
+VITE_FIREBASE_MESSAGING_SENDER_ID=
+VITE_FIREBASE_APP_ID=
+```
+
+## Project Structure
+
+```
+src/
+├── components/       # Reusable UI components (Header, Modals, Loader...)
+├── pages/            # Page-level components (Home, Notices, Profile...)
+├── redux/            # Redux store and slices
+├── services/         # API service functions
+├── types/            # TypeScript type definitions
+├── hooks/            # Custom React hooks
+└── utils/            # Utility functions
 ```
