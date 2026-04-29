@@ -39,7 +39,7 @@ export default function ModalEditUser({ onClose }: Props) {
     watch,
     formState: { errors },
   } = useForm<FormData>({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schema) as any,
     defaultValues: {
       name: user?.name || '',
       email: user?.email || '',
