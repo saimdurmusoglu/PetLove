@@ -196,7 +196,7 @@ const RegisterPage = () => {
               onClick={() => setShowPassword((prev) => !prev)}
             >
               <use
-                href={`/sprite/sprite.svg#${showPassword ? "icon-eye" : "icon-eye-off"}`}
+                href={`/PetLove/sprite/sprite.svg#${showPassword ? "icon-eye" : "icon-eye-off"}`}
               />
             </svg>
             {errors.password && (
@@ -223,7 +223,7 @@ const RegisterPage = () => {
               onClick={() => setShowConfirm((prev) => !prev)}
             >
               <use
-                href={`/sprite/sprite.svg#${showConfirm ? "icon-eye" : "icon-eye-off"}`}
+                href={`/PetLove/sprite/sprite.svg#${showConfirm ? "icon-eye" : "icon-eye-off"}`}
               />
             </svg>
             {errors.confirmPassword && (

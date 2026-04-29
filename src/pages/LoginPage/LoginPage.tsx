@@ -160,7 +160,7 @@ const LoginPage = () => {
               onClick={() => setShowPassword((prev) => !prev)}
             >
               <use
-                href={`/sprite/sprite.svg#${showPassword ? "icon-eye" : "icon-eye-off"}`}
+                href={`/PetLove/sprite/sprite.svg#${showPassword ? "icon-eye" : "icon-eye-off"}`}
               />
             </svg>
             {errors.password && (

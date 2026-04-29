@@ -221,7 +221,7 @@ export default function AddPetPage() {
                     className={isActive ? styles.sexIconActive : iconClass}
                   >
                     <use
-                      href={`/sprite/sprite.svg#${isActive ? `${icon}-white` : icon}`}
+                      href={`/PetLove/sprite/sprite.svg#${isActive ? `${icon}-white` : icon}`}
                     />
                   </svg>
                 </label>
