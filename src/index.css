@@ -7,15 +7,15 @@
 }
 
 :root {
-  --color-primary: #F6B83D;
-  --color-primary-light: #FFF4DF;
+  --color-primary: #f6b83d;
+  --color-primary-light: #fff4df;
   --color-text: #262626;
   --color-text-secondary: #2b2b2a;
-  --color-white: #FFFFFF;
-  --color-error: #EF2447;
-  --color-success: #3CBC81;
-  --color-border: #F6B83D;
-  --color-button: #F6B83D;
+  --color-white: #ffffff;
+  --color-error: #ef2447;
+  --color-success: #3cbc81;
+  --color-border: #f6b83d;
+  --color-button: #f6b83d;
   --color-button-hover: #f9b020;
   --color-button-hover-2: #fbe7c1;
   --color-btn-secondary: rgba(38, 38, 38, 0.05);
@@ -31,16 +31,16 @@
   --color-background: #f9f9f9;
   --color-close: #a32d2d;
   --color-close-background: #fde8e8;
-  --color-female: #F43F5E;
-  --color-female-light: #FFF0F6;
-  --color-female-border: #FF8DC8;
-  --color-female-icon: #FF4081;
-  --color-male: #54ADFF;
-  --color-male-light: #EBF4FF;
-  --color-unknown: #F6B83D;
-  --color-unknown-light: #FFF4DF;
+  --color-female: #f43f5e;
+  --color-female-light: #fff0f6;
+  --color-female-border: #ff8dc8;
+  --color-female-icon: #ff4081;
+  --color-male: #54adff;
+  --color-male-light: #ebf4ff;
+  --color-unknown: #f6b83d;
+  --color-unknown-light: #fff4df;
 
-  --font-main: 'Manrope', sans-serif;
+  --font-main: "Manrope", sans-serif;
 
   --radius-sm: 8px;
   --radius-md: 12px;

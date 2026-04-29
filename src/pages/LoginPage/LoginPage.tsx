@@ -1,10 +1,10 @@
-import {useEffect, useState} from "react";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import {Link, useNavigate} from "react-router-dom";
-import {toast} from "react-toastify";
-import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import {
   loginUser,
   fetchCurrentUser,
@@ -42,7 +42,7 @@ const LoginPage = () => {
   const {
     register,
     handleSubmit,
-    formState: {errors, touchedFields},
+    formState: { errors, touchedFields },
   } = useForm<LoginFormData>({
     resolver: yupResolver(schema),
     mode: "onTouched",
@@ -94,14 +94,20 @@ const LoginPage = () => {
               srcSet="/images/dog@2x.png 2x"
               alt=""
               className={styles.avatarImg}
-            /> 
+            />
           </div>
           <div className={styles.content}>
             <div className={styles.row}>
               <h3 className={styles.informTitle}>Rich</h3>
-              <p className={styles.birthday}>Birthday: <span>21.09.2020</span></p>
+              <p className={styles.birthday}>
+                Birthday: <span>21.09.2020</span>
+              </p>
             </div>
-            <p className={styles.informSubtitle}>Rich would be the perfect addition to an active family that loves to play and go on walks. I bet he would love having a doggy playmate too!</p>
+            <p className={styles.informSubtitle}>
+              Rich would be the perfect addition to an active family that loves
+              to play and go on walks. I bet he would love having a doggy
+              playmate too!
+            </p>
           </div>
         </div>
       </div>

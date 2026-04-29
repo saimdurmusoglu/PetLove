@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -6,7 +6,7 @@ import {
   signOut,
   onAuthStateChanged,
   type User as FirebaseUser,
-} from 'firebase/auth';
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -28,5 +28,6 @@ export const firebaseRegister = (email: string, password: string) =>
 
 export const firebaseSignOut = (): Promise<void> => signOut(auth);
 
-export const onFirebaseAuthChange = (callback: (user: FirebaseUser | null) => void) =>
-  onAuthStateChanged(auth, callback);
+export const onFirebaseAuthChange = (
+  callback: (user: FirebaseUser | null) => void,
+) => onAuthStateChanged(auth, callback);

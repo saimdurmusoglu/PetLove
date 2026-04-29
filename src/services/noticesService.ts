@@ -1,5 +1,5 @@
-import { api } from './api';
-import type { NoticesResponse, NoticeDetail } from '../types/notices';
+import { api } from "./api";
+import type { NoticesResponse, NoticeDetail } from "../types/notices";
 
 export interface NoticesParams {
   keyword?: string;
@@ -14,8 +14,10 @@ export interface NoticesParams {
   limit?: number;
 }
 
-export const getNotices = async (params: NoticesParams): Promise<NoticesResponse> => {
-  const { data } = await api.get<NoticesResponse>('/notices', { params });
+export const getNotices = async (
+  params: NoticesParams,
+): Promise<NoticesResponse> => {
+  const { data } = await api.get<NoticesResponse>("/notices", { params });
   return data;
 };
 
@@ -25,17 +27,17 @@ export const getNoticeById = async (id: string): Promise<NoticeDetail> => {
 };
 
 export const getCategories = async (): Promise<string[]> => {
-  const { data } = await api.get<string[]>('/notices/categories');
+  const { data } = await api.get<string[]>("/notices/categories");
   return data;
 };
 
 export const getSexOptions = async (): Promise<string[]> => {
-  const { data } = await api.get<string[]>('/notices/sex');
+  const { data } = await api.get<string[]>("/notices/sex");
   return data;
 };
 
 export const getSpecies = async (): Promise<string[]> => {
-  const { data } = await api.get<string[]>('/notices/species');
+  const { data } = await api.get<string[]>("/notices/species");
   return data;
 };
 
@@ -48,6 +50,6 @@ export const removeFromFavorites = async (id: string): Promise<void> => {
 };
 
 export const searchCities = async (keyword: string) => {
-  const { data } = await api.get('/cities', { params: { keyword } });
+  const { data } = await api.get("/cities", { params: { keyword } });
   return data;
 };

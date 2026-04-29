@@ -1,6 +1,6 @@
-import {useState, useEffect} from "react";
-import type {NewsItem} from "../../types/news";
-import {getNews} from "../../services/newsService";
+import { useState, useEffect } from "react";
+import type { NewsItem } from "../../types/news";
+import { getNews } from "../../services/newsService";
 import styles from "./NewPage.module.css";
 
 export default function NewPage() {

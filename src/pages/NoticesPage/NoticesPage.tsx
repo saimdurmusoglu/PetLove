@@ -1,7 +1,7 @@
-import {useEffect, useRef, useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {toast} from "react-toastify";
-import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import {
   fetchNotices,
   fetchCategories,
@@ -20,20 +20,20 @@ import {
   selectSpeciesList,
   selectFavoriteIds,
 } from "../../redux/slices/noticesSlice";
-import {selectIsLoggedIn} from "../../redux/slices/authSlice";
-import {getNoticeById, searchCities} from "../../services/noticesService";
-import type {NoticeDetail, Notice} from "../../types/notices";
-import type {NoticesParams} from "../../services/noticesService";
+import { selectIsLoggedIn } from "../../redux/slices/authSlice";
+import { getNoticeById, searchCities } from "../../services/noticesService";
+import type { NoticeDetail, Notice } from "../../types/notices";
+import type { NoticesParams } from "../../services/noticesService";
 import ModalAttention from "../../components/ModalAttention/ModalAttention";
 import ModalNotice from "../../components/ModalNotice/ModalNotice";
 import NoticeCard from "../../components/NoticeCard/NoticeCard";
 import styles from "./NoticesPage.module.css";
 
 const SORT_OPTIONS = [
-  {label: "Popular", value: "popular"},
-  {label: "Unpopular", value: "unpopular"},
-  {label: "Cheap", value: "cheap"},
-  {label: "Expensive", value: "expensive"},
+  { label: "Popular", value: "popular" },
+  { label: "Unpopular", value: "unpopular" },
+  { label: "Cheap", value: "cheap" },
+  { label: "Expensive", value: "expensive" },
 ];
 
 function buildParams(
@@ -81,7 +81,7 @@ export default function NoticesPage() {
   const [searchInput, setSearchInput] = useState("");
   const [locationInput, setLocationInput] = useState("");
   const [locationSuggestions, setLocationSuggestions] = useState<
-    {_id: string; cityEn: string; stateEn: string}[]
+    { _id: string; cityEn: string; stateEn: string }[]
   >([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [showAttention, setShowAttention] = useState(false);
@@ -156,12 +156,12 @@ export default function NoticesPage() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(setFilter({key: "keyword", value: searchInput}));
+    dispatch(setFilter({ key: "keyword", value: searchInput }));
   };
 
   const handleClearSearch = () => {
     setSearchInput("");
-    dispatch(setFilter({key: "keyword", value: ""}));
+    dispatch(setFilter({ key: "keyword", value: "" }));
   };
 
   const handleLocationSelect = (city: {
@@ -172,18 +172,21 @@ export default function NoticesPage() {
     skipLocationSearchRef.current = true;
     setLocationInput(`${city.cityEn}, ${city.stateEn}`);
     setShowSuggestions(false);
-    dispatch(setFilter({key: "location", value: city._id}));
+    dispatch(setFilter({ key: "location", value: city._id }));
   };
 
   const handleLocationClear = () => {
     setLocationInput("");
     setShowSuggestions(false);
-    dispatch(setFilter({key: "location", value: ""}));
+    dispatch(setFilter({ key: "location", value: "" }));
   };
 
   const handleSortPill = (value: string) => {
     dispatch(
-      setFilter({key: "sortBy", value: filters.sortBy === value ? "" : value}),
+      setFilter({
+        key: "sortBy",
+        value: filters.sortBy === value ? "" : value,
+      }),
     );
   };
 
@@ -206,11 +209,11 @@ export default function NoticesPage() {
       return;
     }
     const isFav = favoriteIds.includes(notice._id);
-    dispatch(toggleFavorite({id: notice._id, isFavorite: isFav}))
+    dispatch(toggleFavorite({ id: notice._id, isFavorite: isFav }))
       .unwrap()
       .then(() => {
         if (!isFav) {
-          navigate('/profile', { state: { showCongrats: true } });
+          navigate("/profile", { state: { showCongrats: true } });
         }
       })
       .catch(() => toast.error("Failed to update favorites"));
@@ -219,7 +222,7 @@ export default function NoticesPage() {
   const handleToggleFavoriteFromModal = () => {
     if (!selectedNotice) return;
     const isFav = favoriteIds.includes(selectedNotice._id);
-    dispatch(toggleFavorite({id: selectedNotice._id, isFavorite: isFav}))
+    dispatch(toggleFavorite({ id: selectedNotice._id, isFavorite: isFav }))
       .unwrap()
       .catch(() => toast.error("Failed to update favorites"));
   };
@@ -478,7 +481,7 @@ export default function NoticesPage() {
                       className={styles.pillClearBtn}
                       onClick={(e) => {
                         e.stopPropagation();
-                        dispatch(setFilter({key: "sortBy", value: ""}));
+                        dispatch(setFilter({ key: "sortBy", value: "" }));
                       }}
                     >
                       ✕
@@ -488,7 +491,6 @@ export default function NoticesPage() {
               );
             })}
           </div>
-
         </div>
 
         {isLoading && <p className={styles.loading}>Loading...</p>}

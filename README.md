@@ -6,6 +6,10 @@ PetLove is a responsive web application for pet lovers — browse pet adoption n
 
 🔗 [PetLove on Netlify / GitHub Pages](#) ← _deploy linkini buraya ekle_
 
+## GitHub Repository
+
+🐙 [github.com/saimdurmusoglu/PetLove](https://github.com/saimdurmusoglu/PetLove)
+
 ## Features
 
 - **Authentication** — register, login, logout with persistent session (JWT)
@@ -28,16 +32,17 @@ PetLove is a responsive web application for pet lovers — browse pet adoption n
 | Routing | React Router DOM v7 |
 | Forms | React Hook Form + Yup |
 | HTTP | Axios |
+| Firebase | Authentication & Realtime |
 | Styling | CSS Modules |
 | UI Extras | React Toastify, React Datepicker, React Select |
 
 ## Design
 
-🎨 [Figma Design](#) ← _tasarım linkini buraya ekle_
+🎨 [Figma Design](https://www.figma.com/file/puMNfZVg4YI8UZoJ1QiLLi/Petl%F0%9F%92%9Bve?type=design&node-id=55838-750&mode=design&t=Xg1IwIcKebTl5xGs-0)
 
 ## Technical Specification
 
-📄 [Technical Specification](#) ← _teknik görev linkini buraya ekle_
+📄 [Technical Specification](https://docs.google.com/spreadsheets/d/1GHSG_2uXb07JxlqD2ivb-i7ZHAsx91G-_mWUlBesZc4/edit?gid=1134921873#gid=1134921873)
 
 ## Getting Started
 
@@ -50,15 +55,15 @@ PetLove is a responsive web application for pet lovers — browse pet adoption n
 
 ```bash
 # Clone the repository
-git clone https://github.com/<your-username>/petlove.git
-cd petlove
+git clone https://github.com/saimdurmusoglu/PetLove.git
+cd PetLove
 
 # Install dependencies
 npm install
 
 # Create environment file
 cp .env.example .env
-# Fill in your credentials in .env
+# Fill in your Firebase credentials in .env
 
 # Start development server
 npm run dev
@@ -96,7 +101,7 @@ src/
 ├── components/       # Reusable UI components (Header, Modals, Loader...)
 ├── pages/            # Page-level components (Home, Notices, Profile...)
 ├── redux/            # Redux store and slices
-├── services/         # API service functions
+├── services/         # API service functions (api.ts, firebase.ts)
 ├── types/            # TypeScript type definitions
 ├── hooks/            # Custom React hooks
 └── utils/            # Utility functions

@@ -1,9 +1,9 @@
-import css from './NoticeCard.module.css';
+import css from "./NoticeCard.module.css";
 
 function formatDate(dateStr: string): string {
   const d = new Date(dateStr);
-  const day = String(d.getDate()).padStart(2, '0');
-  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, "0");
+  const month = String(d.getMonth() + 1).padStart(2, "0");
   const year = d.getFullYear();
   return `${day}.${month}.${year}`;
 }
@@ -83,9 +83,7 @@ export default function NoticeCard({
           </div>
         </div>
 
-        {notice.comment && (
-          <p className={css.cardComment}>{notice.comment}</p>
-        )}
+        {notice.comment && <p className={css.cardComment}>{notice.comment}</p>}
 
         {notice.price !== undefined && (
           <p className={css.cardPrice}>${notice.price}</p>
@@ -93,21 +91,26 @@ export default function NoticeCard({
 
         <div className={css.cardActions}>
           <button
-            className={`${css.learnMoreBtn} ${hideActions || !isLoggedIn ? css.learnMoreFull : ''}`}
+            className={`${css.learnMoreBtn} ${hideActions || !isLoggedIn ? css.learnMoreFull : ""}`}
             onClick={onLearnMore}
           >
             Learn more
           </button>
-          {!hideActions && isLoggedIn && (
-            showDelete ? (
-              <button className={css.deleteBtn} onClick={onDelete} aria-label="Delete">
+          {!hideActions &&
+            isLoggedIn &&
+            (showDelete ? (
+              <button
+                className={css.deleteBtn}
+                onClick={onDelete}
+                aria-label="Delete"
+              >
                 <svg width={20} height={20}>
                   <use href="/sprite/sprite.svg#icon-trash" />
                 </svg>
               </button>
             ) : (
               <button
-                className={`${css.heartBtn} ${isFavorite ? css.heartActive : ''}`}
+                className={`${css.heartBtn} ${isFavorite ? css.heartActive : ""}`}
                 onClick={onToggleFavorite}
                 aria-label="Toggle favorite"
               >
@@ -115,8 +118,7 @@ export default function NoticeCard({
                   <use href="/sprite/sprite.svg#icon-heart" />
                 </svg>
               </button>
-            )
-          )}
+            ))}
         </div>
       </div>
     </div>

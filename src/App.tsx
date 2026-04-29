@@ -1,25 +1,25 @@
-import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useAppDispatch, useAppSelector } from './hooks/redux';
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useAppDispatch, useAppSelector } from "./hooks/redux";
 import {
   fetchCurrentUser,
   logout,
   selectIsRefreshing,
   selectIsLoggedIn,
-} from './redux/slices/authSlice';
-import Header from './components/Header/Header';
-import HomePage from './pages/HomePage/HomePage';
-import LoginPage from './pages/LoginPage/LoginPage';
-import RegisterPage from './pages/RegisterPage/RegisterPage';
-import NewPage from './pages/NewPage/NewPage';
-import FriendsPage from './pages/FriendsPage/FriendsPage';
-import NoticesPage from './pages/NoticesPage/NoticesPage';
-import ProfilePage from './pages/ProfilePage/ProfilePage';
-import AddPetPage from './pages/AddPetPage/AddPetPage';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import Loader from './components/Loader/Loader';
+} from "./redux/slices/authSlice";
+import Header from "./components/Header/Header";
+import HomePage from "./pages/HomePage/HomePage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import NewPage from "./pages/NewPage/NewPage";
+import FriendsPage from "./pages/FriendsPage/FriendsPage";
+import NoticesPage from "./pages/NoticesPage/NoticesPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import AddPetPage from "./pages/AddPetPage/AddPetPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import Loader from "./components/Loader/Loader";
 
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
@@ -31,15 +31,15 @@ const App = () => {
   const isRefreshing = useAppSelector(selectIsRefreshing);
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem("token")) {
       dispatch(fetchCurrentUser());
     }
   }, [dispatch]);
 
   useEffect(() => {
     const handleAuthLogout = () => dispatch(logout());
-    window.addEventListener('auth:logout', handleAuthLogout);
-    return () => window.removeEventListener('auth:logout', handleAuthLogout);
+    window.addEventListener("auth:logout", handleAuthLogout);
+    return () => window.removeEventListener("auth:logout", handleAuthLogout);
   }, [dispatch]);
 
   if (isRefreshing) {

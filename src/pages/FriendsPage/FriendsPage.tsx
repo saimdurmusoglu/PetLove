@@ -1,6 +1,6 @@
-import {useEffect, useState} from "react";
-import {fetchFriends} from "../../services/friendsService";
-import type {Friend} from "../../types/friends";
+import { useEffect, useState } from "react";
+import { fetchFriends } from "../../services/friendsService";
+import type { Friend } from "../../types/friends";
 import css from "./FriendsPage.module.css";
 
 function getWorkHours(friend: Friend): string | null {
@@ -19,7 +19,7 @@ function isOpenToday(friend: Friend): boolean {
   return friend.workDays[index]?.isOpen ?? false;
 }
 
-function FriendCard({friend}: {friend: Friend}) {
+function FriendCard({ friend }: { friend: Friend }) {
   const hours = getWorkHours(friend);
   const open = isOpenToday(friend);
 
@@ -45,21 +45,38 @@ function FriendCard({friend}: {friend: Friend}) {
         {friend.email && (
           <div className={css.infoRow}>
             <span className={css.infoLabel}>Email:</span>
-            <a href={`mailto:${friend.email}`} className={`${css.infoVal} ${css.infoLink}`}>{friend.email}</a>
+            <a
+              href={`mailto:${friend.email}`}
+              className={`${css.infoVal} ${css.infoLink}`}
+            >
+              {friend.email}
+            </a>
           </div>
         )}
 
         {friend.address && (
           <div className={css.infoRow}>
             <span className={css.infoLabel}>Address:</span>
-            <a href={`https://maps.google.com/?q=${encodeURIComponent(friend.address)}`} target="_blank" rel="noreferrer" className={`${css.infoVal} ${css.infoLink}`}>{friend.address}</a>
+            <a
+              href={`https://maps.google.com/?q=${encodeURIComponent(friend.address)}`}
+              target="_blank"
+              rel="noreferrer"
+              className={`${css.infoVal} ${css.infoLink}`}
+            >
+              {friend.address}
+            </a>
           </div>
         )}
 
         {friend.phone && (
           <div className={css.infoRow}>
             <span className={css.infoLabel}>Phone:</span>
-            <a href={`tel:${friend.phone}`} className={`${css.infoVal} ${css.infoLink}`}>{friend.phone}</a>
+            <a
+              href={`tel:${friend.phone}`}
+              className={`${css.infoVal} ${css.infoLink}`}
+            >
+              {friend.phone}
+            </a>
           </div>
         )}
       </div>

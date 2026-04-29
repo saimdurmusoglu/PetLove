@@ -1,12 +1,16 @@
-import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { registerUser, selectAuthError, selectAuthLoading } from '../../redux/slices/authSlice';
-import styles from './RegisterPage.module.css';
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import {
+  registerUser,
+  selectAuthError,
+  selectAuthLoading,
+} from "../../redux/slices/authSlice";
+import styles from "./RegisterPage.module.css";
 
 interface RegisterFormData {
   name: string;
@@ -16,22 +20,25 @@ interface RegisterFormData {
 }
 
 const schema = yup.object({
-  name: yup.string().required('Name is required').min(2, 'Name must be at least 2 characters'),
+  name: yup
+    .string()
+    .required("Name is required")
+    .min(2, "Name must be at least 2 characters"),
   email: yup
     .string()
-    .required('Email is required')
+    .required("Email is required")
     .matches(
       /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
-      'Enter a valid Email'
+      "Enter a valid Email",
     ),
   password: yup
     .string()
-    .required('Password is required')
-    .min(7, 'Password must be at least 7 characters'),
+    .required("Password is required")
+    .min(7, "Password must be at least 7 characters"),
   confirmPassword: yup
     .string()
-    .required('Please confirm your password')
-    .oneOf([yup.ref('password')], 'Passwords do not match'),
+    .required("Please confirm your password")
+    .oneOf([yup.ref("password")], "Passwords do not match"),
 });
 
 const RegisterPage = () => {
@@ -48,7 +55,7 @@ const RegisterPage = () => {
     formState: { errors, touchedFields },
   } = useForm<RegisterFormData>({
     resolver: yupResolver(schema),
-    mode: 'onTouched',
+    mode: "onTouched",
   });
 
   useEffect(() => {
@@ -59,10 +66,14 @@ const RegisterPage = () => {
 
   const onSubmit = async (data: RegisterFormData) => {
     const result = await dispatch(
-      registerUser({ name: data.name, email: data.email, password: data.password })
+      registerUser({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      }),
     );
     if (registerUser.fulfilled.match(result)) {
-      navigate('/profile');
+      navigate("/profile");
     }
   };
 
@@ -103,9 +114,14 @@ const RegisterPage = () => {
           <div className={styles.content}>
             <div className={styles.row}>
               <h3 className={styles.informTitle}>Jack</h3>
-              <p className={styles.birthday}>Birthday: <span>18.10.2021</span></p>
+              <p className={styles.birthday}>
+                Birthday: <span>18.10.2021</span>
+              </p>
             </div>
-            <p className={styles.informSubtitle}>Jack is a gray Persian cat with green eyes. He loves to be pampered and groomed, and enjoys playing with toys.</p>
+            <p className={styles.informSubtitle}>
+              Jack is a gray Persian cat with green eyes. He loves to be
+              pampered and groomed, and enjoys playing with toys.
+            </p>
           </div>
         </div>
       </div>
@@ -119,10 +135,10 @@ const RegisterPage = () => {
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.fieldWrap}>
             <input
-              {...register('name')}
+              {...register("name")}
               type="text"
               placeholder="Name"
-              className={`${styles.input} ${errors.name ? styles.inputError : ''} ${!errors.name && touchedFields.name ? styles.inputSuccess : ''}`}
+              className={`${styles.input} ${errors.name ? styles.inputError : ""} ${!errors.name && touchedFields.name ? styles.inputSuccess : ""}`}
             />
             {errors.name && (
               <>
@@ -141,10 +157,10 @@ const RegisterPage = () => {
 
           <div className={styles.fieldWrap}>
             <input
-              {...register('email')}
+              {...register("email")}
               type="email"
               placeholder="Email"
-              className={`${styles.input} ${errors.email ? styles.inputError : ''} ${!errors.email && touchedFields.email ? styles.inputSuccess : ''}`}
+              className={`${styles.input} ${errors.email ? styles.inputError : ""} ${!errors.email && touchedFields.email ? styles.inputSuccess : ""}`}
             />
             {errors.email && (
               <>
@@ -163,10 +179,10 @@ const RegisterPage = () => {
 
           <div className={styles.fieldWrap}>
             <input
-              {...register('password')}
-              type={showPassword ? 'text' : 'password'}
+              {...register("password")}
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
-              className={`${styles.input} ${errors.password ? styles.inputError : ''} ${!errors.password && touchedFields.password ? styles.inputSuccess : ''}`}
+              className={`${styles.input} ${errors.password ? styles.inputError : ""} ${!errors.password && touchedFields.password ? styles.inputSuccess : ""}`}
             />
             {!errors.password && touchedFields.password && (
               <svg width={18} height={18} className={styles.iconSuccess}>
@@ -176,10 +192,12 @@ const RegisterPage = () => {
             <svg
               width={18}
               height={18}
-              className={`${styles.iconEye} ${errors.password ? styles.iconEyeShifted : ''}`}
-              onClick={() => setShowPassword(prev => !prev)}
+              className={`${styles.iconEye} ${errors.password ? styles.iconEyeShifted : ""}`}
+              onClick={() => setShowPassword((prev) => !prev)}
             >
-              <use href={`/sprite/sprite.svg#${showPassword ? 'icon-eye' : 'icon-eye-off'}`} />
+              <use
+                href={`/sprite/sprite.svg#${showPassword ? "icon-eye" : "icon-eye-off"}`}
+              />
             </svg>
             {errors.password && (
               <span className={styles.errorMsg}>{errors.password.message}</span>
@@ -188,10 +206,10 @@ const RegisterPage = () => {
 
           <div className={styles.fieldWrap}>
             <input
-              {...register('confirmPassword')}
-              type={showConfirm ? 'text' : 'password'}
+              {...register("confirmPassword")}
+              type={showConfirm ? "text" : "password"}
               placeholder="Confirm Password"
-              className={`${styles.input} ${errors.confirmPassword ? styles.inputError : ''} ${!errors.confirmPassword && touchedFields.confirmPassword ? styles.inputSuccess : ''}`}
+              className={`${styles.input} ${errors.confirmPassword ? styles.inputError : ""} ${!errors.confirmPassword && touchedFields.confirmPassword ? styles.inputSuccess : ""}`}
             />
             {!errors.confirmPassword && touchedFields.confirmPassword && (
               <svg width={18} height={18} className={styles.iconSuccess}>
@@ -201,23 +219,31 @@ const RegisterPage = () => {
             <svg
               width={18}
               height={18}
-              className={`${styles.iconEye} ${errors.confirmPassword ? styles.iconEyeShifted : ''}`}
-              onClick={() => setShowConfirm(prev => !prev)}
+              className={`${styles.iconEye} ${errors.confirmPassword ? styles.iconEyeShifted : ""}`}
+              onClick={() => setShowConfirm((prev) => !prev)}
             >
-              <use href={`/sprite/sprite.svg#${showConfirm ? 'icon-eye' : 'icon-eye-off'}`} />
+              <use
+                href={`/sprite/sprite.svg#${showConfirm ? "icon-eye" : "icon-eye-off"}`}
+              />
             </svg>
             {errors.confirmPassword && (
-              <span className={styles.errorMsg}>{errors.confirmPassword.message}</span>
+              <span className={styles.errorMsg}>
+                {errors.confirmPassword.message}
+              </span>
             )}
           </div>
 
-          <button type="submit" className={styles.submitBtn} disabled={isLoading}>
-            {isLoading ? 'Registering...' : 'Register'}
+          <button
+            type="submit"
+            className={styles.submitBtn}
+            disabled={isLoading}
+          >
+            {isLoading ? "Registering..." : "Register"}
           </button>
         </form>
 
         <p className={styles.switchText}>
-          Already have an account?{' '}
+          Already have an account?{" "}
           <Link to="/login" className={styles.switchLink}>
             Login
           </Link>

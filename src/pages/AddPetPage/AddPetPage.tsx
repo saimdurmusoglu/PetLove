@@ -1,13 +1,13 @@
-import {useEffect, useRef, useState} from "react";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
+import { useEffect, useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import {useNavigate} from "react-router-dom";
-import {toast} from "react-toastify";
-import {useAppDispatch} from "../../hooks/redux";
-import {addPet} from "../../redux/slices/authSlice";
-import {getNotices} from "../../services/noticesService";
-import type {Notice} from "../../types/notices";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useAppDispatch } from "../../hooks/redux";
+import { addPet } from "../../redux/slices/authSlice";
+import { getNotices } from "../../services/noticesService";
+import type { Notice } from "../../types/notices";
 import styles from "./AddPetPage.module.css";
 
 interface AddPetFormData {
@@ -73,7 +73,7 @@ export default function AddPetPage() {
     handleSubmit,
     watch,
     setValue,
-    formState: {errors},
+    formState: { errors },
   } = useForm<FormData>({
     resolver: yupResolver(schema),
     defaultValues: {},
@@ -95,7 +95,7 @@ export default function AddPetPage() {
     }
     debounceRef.current = setTimeout(async () => {
       try {
-        const res = await getNotices({keyword: value, limit: 5});
+        const res = await getNotices({ keyword: value, limit: 5 });
         setSuggestions(res.results);
         setIsSuggestionsOpen(res.results.length > 0);
       } catch {
@@ -196,7 +196,7 @@ export default function AddPetPage() {
                 iconClass: styles.sexIconUnknown,
                 icon: "icon-other",
               },
-            ].map(({value, bgClass, activeClass, iconClass, icon}) => {
+            ].map(({ value, bgClass, activeClass, iconClass, icon }) => {
               // eslint-disable-next-line react-hooks/incompatible-library
               const isActive = watch("sex") === value;
               return (

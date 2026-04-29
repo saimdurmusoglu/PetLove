@@ -1,14 +1,14 @@
-import {useState} from "react";
-import {NavLink, Link, useLocation} from "react-router-dom";
-import {useAppSelector} from "../../hooks/redux";
+import { useState } from "react";
+import { NavLink, Link, useLocation } from "react-router-dom";
+import { useAppSelector } from "../../hooks/redux";
 import ModalApproveAction from "../ModalApproveAction/ModalApproveAction";
 import styles from "./Header.module.css";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
-  const {isLoggedIn, user} = useAppSelector((state) => state.auth);
-  const {pathname} = useLocation();
+  const { isLoggedIn, user } = useAppSelector((state) => state.auth);
+  const { pathname } = useLocation();
   const isHome = pathname === "/";
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
@@ -16,11 +16,11 @@ const Header = () => {
 
   const getNavClass = (isActive: boolean) => {
     if (isLoggedIn) {
-      return isActive
-        ? `${styles.navLink} ${styles.active}`
-        : styles.navLink;
+      return isActive ? `${styles.navLink} ${styles.active}` : styles.navLink;
     }
-    return isActive ? `${styles.navLinkLight} ${styles.active}` : styles.navLinkLight;
+    return isActive
+      ? `${styles.navLinkLight} ${styles.active}`
+      : styles.navLinkLight;
   };
 
   const getDesktopNavClass = (isActive: boolean) => {
@@ -54,19 +54,19 @@ const Header = () => {
         <nav className={styles.desktopNav}>
           <NavLink
             to="/news"
-            className={({isActive}) => getDesktopNavClass(isActive)}
+            className={({ isActive }) => getDesktopNavClass(isActive)}
           >
             News
           </NavLink>
           <NavLink
             to="/notices"
-            className={({isActive}) => getDesktopNavClass(isActive)}
+            className={({ isActive }) => getDesktopNavClass(isActive)}
           >
             Find pet
           </NavLink>
           <NavLink
             to="/friends"
-            className={({isActive}) => getDesktopNavClass(isActive)}
+            className={({ isActive }) => getDesktopNavClass(isActive)}
           >
             Our friends
           </NavLink>
@@ -88,7 +88,12 @@ const Header = () => {
           {/* desktop only: login olmuş */}
           {isLoggedIn && (
             <div className={`${styles.authButtons} ${styles.desktopOnly}`}>
-              <button className={styles.logoutBtnHeader} onClick={() => setShowLogout(true)}>Log out</button>
+              <button
+                className={styles.logoutBtnHeader}
+                onClick={() => setShowLogout(true)}
+              >
+                Log out
+              </button>
             </div>
           )}
 
@@ -152,28 +157,33 @@ const Header = () => {
           >
             <button className={styles.closeBtn} onClick={closeMenu}>
               <svg width={24} height={24} viewBox="0 0 24 24" fill="none">
-                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                <path
+                  d="M18 6L6 18M6 6l12 12"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
               </svg>
             </button>
 
             <nav className={styles.nav}>
               <NavLink
                 to="/news"
-                className={({isActive}) => getNavClass(isActive)}
+                className={({ isActive }) => getNavClass(isActive)}
                 onClick={closeMenu}
               >
                 News
               </NavLink>
               <NavLink
                 to="/notices"
-                className={({isActive}) => getNavClass(isActive)}
+                className={({ isActive }) => getNavClass(isActive)}
                 onClick={closeMenu}
               >
                 Find pet
               </NavLink>
               <NavLink
                 to="/friends"
-                className={({isActive}) => getNavClass(isActive)}
+                className={({ isActive }) => getNavClass(isActive)}
                 onClick={closeMenu}
               >
                 Our friends
@@ -202,7 +212,15 @@ const Header = () => {
                   )}
                   <span>{user?.name}</span>
                 </Link>
-                <button className={styles.logoutBtn} onClick={() => { closeMenu(); setShowLogout(true); }}>Log out</button>
+                <button
+                  className={styles.logoutBtn}
+                  onClick={() => {
+                    closeMenu();
+                    setShowLogout(true);
+                  }}
+                >
+                  Log out
+                </button>
               </div>
             ) : (
               <div className={styles.authNav}>
@@ -225,7 +243,9 @@ const Header = () => {
           </div>
         </div>
       )}
-      {showLogout && <ModalApproveAction onClose={() => setShowLogout(false)} />}
+      {showLogout && (
+        <ModalApproveAction onClose={() => setShowLogout(false)} />
+      )}
     </header>
   );
 };

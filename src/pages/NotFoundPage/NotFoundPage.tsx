@@ -1,5 +1,5 @@
-import { useNavigate } from 'react-router-dom';
-import css from './NotFoundPage.module.css';
+import { useNavigate } from "react-router-dom";
+import css from "./NotFoundPage.module.css";
 
 export default function NotFoundPage() {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ export default function NotFoundPage() {
 
         <p className={css.text}>Ooops! This page not found :(</p>
 
-        <button className={css.homeBtn} onClick={() => navigate('/')}>
+        <button className={css.homeBtn} onClick={() => navigate("/")}>
           To home page
         </button>
       </div>

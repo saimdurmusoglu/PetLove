@@ -1,14 +1,14 @@
-import {useEffect} from "react";
-import {useNavigate} from "react-router-dom";
-import {useAppDispatch} from "../../hooks/redux";
-import {signOut, logout} from "../../redux/slices/authSlice";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../hooks/redux";
+import { signOut, logout } from "../../redux/slices/authSlice";
 import css from "./ModalApproveAction.module.css";
 
 interface Props {
   onClose: () => void;
 }
 
-export default function ModalApproveAction({onClose}: Props) {
+export default function ModalApproveAction({ onClose }: Props) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 

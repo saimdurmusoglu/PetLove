@@ -1,4 +1,4 @@
-import styles from './HomePage.module.css';
+import styles from "./HomePage.module.css";
 
 const HomePage = () => {
   return (
@@ -6,10 +6,12 @@ const HomePage = () => {
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <h1 className={styles.title}>
-            Take good <span className={styles.accent}>care</span> of your small pets
+            Take good <span className={styles.accent}>care</span> of your small
+            pets
           </h1>
           <p className={styles.desc}>
-            Choosing a pet for your home is a choice that is meant to enrich your life with immeasurable joy and tenderness.
+            Choosing a pet for your home is a choice that is meant to enrich
+            your life with immeasurable joy and tenderness.
           </p>
         </div>
         <div className={styles.heroImageWrap}>

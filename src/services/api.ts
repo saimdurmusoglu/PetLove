@@ -1,13 +1,13 @@
-import axios from 'axios';
+import axios from "axios";
 
-const BASE_URL = 'https://petlove.b.goit.study/api';
+const BASE_URL = "https://petlove.b.goit.study/api";
 
 export const api = axios.create({
   baseURL: BASE_URL,
 });
 
-api.interceptors.request.use(config => {
-  const token = localStorage.getItem('token');
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -15,12 +15,12 @@ api.interceptors.request.use(config => {
 });
 
 api.interceptors.response.use(
-  response => response,
-  error => {
+  (response) => response,
+  (error) => {
     if (error.response?.status === 401) {
-      localStorage.removeItem('token');
-      window.dispatchEvent(new CustomEvent('auth:logout'));
+      localStorage.removeItem("token");
+      window.dispatchEvent(new CustomEvent("auth:logout"));
     }
     return Promise.reject(error);
-  }
+  },
 );

@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 import {
   getNotices,
   getCategories,
@@ -7,58 +7,61 @@ import {
   getSpecies,
   addToFavorites,
   removeFromFavorites,
-} from '../../services/noticesService';
-import { fetchCurrentUser } from './authSlice';
-import type { Notice } from '../../types/notices';
-import type { NoticesParams } from '../../services/noticesService';
+} from "../../services/noticesService";
+import { fetchCurrentUser } from "./authSlice";
+import type { Notice } from "../../types/notices";
+import type { NoticesParams } from "../../services/noticesService";
 
 export const fetchNotices = createAsyncThunk(
-  'notices/fetchNotices',
+  "notices/fetchNotices",
   async (params: NoticesParams, { rejectWithValue }) => {
     try {
       return await getNotices(params);
     } catch {
-      return rejectWithValue('Failed to load notices');
+      return rejectWithValue("Failed to load notices");
     }
-  }
+  },
 );
 
 export const fetchCategories = createAsyncThunk(
-  'notices/fetchCategories',
+  "notices/fetchCategories",
   async (_, { rejectWithValue }) => {
     try {
       return await getCategories();
     } catch {
-      return rejectWithValue('Failed to load categories');
+      return rejectWithValue("Failed to load categories");
     }
-  }
+  },
 );
 
 export const fetchSexOptions = createAsyncThunk(
-  'notices/fetchSexOptions',
+  "notices/fetchSexOptions",
   async (_, { rejectWithValue }) => {
     try {
       return await getSexOptions();
     } catch {
-      return rejectWithValue('Failed to load sex options');
+      return rejectWithValue("Failed to load sex options");
     }
-  }
+  },
 );
 
 export const fetchSpecies = createAsyncThunk(
-  'notices/fetchSpecies',
+  "notices/fetchSpecies",
   async (_, { rejectWithValue }) => {
     try {
       return await getSpecies();
     } catch {
-      return rejectWithValue('Failed to load species');
+      return rejectWithValue("Failed to load species");
     }
-  }
+  },
 );
 
 export const toggleFavorite = createAsyncThunk(
-  'notices/toggleFavorite',
-  async ({ id, isFavorite }: { id: string; isFavorite: boolean }, { rejectWithValue }) => {
+  "notices/toggleFavorite",
+  async (
+    { id, isFavorite }: { id: string; isFavorite: boolean },
+    { rejectWithValue },
+  ) => {
     try {
       if (isFavorite) {
         await removeFromFavorites(id);
@@ -67,13 +70,14 @@ export const toggleFavorite = createAsyncThunk(
       }
       return { id, isFavorite };
     } catch (error: unknown) {
-      const status = (error as { response?: { status?: number } })?.response?.status;
+      const status = (error as { response?: { status?: number } })?.response
+        ?.status;
       if (!isFavorite && status === 409) {
         return { id, isFavorite: false };
       }
-      return rejectWithValue('Failed to update favorites');
+      return rejectWithValue("Failed to update favorites");
     }
-  }
+  },
 );
 
 interface NoticesFilters {
@@ -99,12 +103,12 @@ interface NoticesState {
 }
 
 const initialFilters: NoticesFilters = {
-  keyword: '',
-  category: '',
-  sex: '',
-  species: '',
-  sortBy: '',
-  location: '',
+  keyword: "",
+  category: "",
+  sex: "",
+  species: "",
+  sortBy: "",
+  location: "",
 };
 
 const initialState: NoticesState = {
@@ -121,12 +125,12 @@ const initialState: NoticesState = {
 };
 
 const noticesSlice = createSlice({
-  name: 'notices',
+  name: "notices",
   initialState,
   reducers: {
     setFilter(
       state,
-      action: PayloadAction<{ key: keyof NoticesFilters; value: string }>
+      action: PayloadAction<{ key: keyof NoticesFilters; value: string }>,
     ) {
       state.filters[action.payload.key] = action.payload.value;
       state.page = 1;
@@ -139,9 +143,9 @@ const noticesSlice = createSlice({
       state.page = 1;
     },
   },
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
-      .addCase(fetchNotices.pending, state => {
+      .addCase(fetchNotices.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
@@ -166,7 +170,7 @@ const noticesSlice = createSlice({
       .addCase(toggleFavorite.fulfilled, (state, action) => {
         const { id, isFavorite } = action.payload;
         if (isFavorite) {
-          state.favoriteIds = state.favoriteIds.filter(fId => fId !== id);
+          state.favoriteIds = state.favoriteIds.filter((fId) => fId !== id);
         } else {
           if (!state.favoriteIds.includes(id)) {
             state.favoriteIds.push(id);
@@ -175,7 +179,7 @@ const noticesSlice = createSlice({
       })
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
         const favIds = (action.payload.noticesFavorites || []).map(
-          (n: { _id: string }) => n._id
+          (n: { _id: string }) => n._id,
         );
         state.favoriteIds = favIds;
       });
@@ -185,12 +189,21 @@ const noticesSlice = createSlice({
 export const { setFilter, setPage, resetFilters } = noticesSlice.actions;
 export default noticesSlice.reducer;
 
-export const selectNotices = (state: { notices: NoticesState }) => state.notices.items;
-export const selectTotalPages = (state: { notices: NoticesState }) => state.notices.totalPages;
-export const selectNoticesLoading = (state: { notices: NoticesState }) => state.notices.isLoading;
-export const selectFilters = (state: { notices: NoticesState }) => state.notices.filters;
-export const selectPage = (state: { notices: NoticesState }) => state.notices.page;
-export const selectCategories = (state: { notices: NoticesState }) => state.notices.categories;
-export const selectSexOptions = (state: { notices: NoticesState }) => state.notices.sexOptions;
-export const selectSpeciesList = (state: { notices: NoticesState }) => state.notices.speciesList;
-export const selectFavoriteIds = (state: { notices: NoticesState }) => state.notices.favoriteIds;
+export const selectNotices = (state: { notices: NoticesState }) =>
+  state.notices.items;
+export const selectTotalPages = (state: { notices: NoticesState }) =>
+  state.notices.totalPages;
+export const selectNoticesLoading = (state: { notices: NoticesState }) =>
+  state.notices.isLoading;
+export const selectFilters = (state: { notices: NoticesState }) =>
+  state.notices.filters;
+export const selectPage = (state: { notices: NoticesState }) =>
+  state.notices.page;
+export const selectCategories = (state: { notices: NoticesState }) =>
+  state.notices.categories;
+export const selectSexOptions = (state: { notices: NoticesState }) =>
+  state.notices.sexOptions;
+export const selectSpeciesList = (state: { notices: NoticesState }) =>
+  state.notices.speciesList;
+export const selectFavoriteIds = (state: { notices: NoticesState }) =>
+  state.notices.favoriteIds;

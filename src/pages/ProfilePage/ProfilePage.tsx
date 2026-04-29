@@ -1,7 +1,7 @@
-import {useEffect, useState} from "react";
-import {Link, useLocation} from "react-router-dom";
-import {toast} from "react-toastify";
-import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import {
   fetchCurrentUser,
   removePet,
@@ -13,8 +13,8 @@ import {
   getNoticeById,
   addToFavorites,
 } from "../../services/noticesService";
-import type {NoticeCardItem} from "../../components/NoticeCard/NoticeCard";
-import type {NoticeDetail} from "../../types/notices";
+import type { NoticeCardItem } from "../../components/NoticeCard/NoticeCard";
+import type { NoticeDetail } from "../../types/notices";
 import NoticeCard from "../../components/NoticeCard/NoticeCard";
 import ModalNotice from "../../components/ModalNotice/ModalNotice";
 import ModalCongrats from "../../components/ModalCongrats/ModalCongrats";
@@ -105,7 +105,7 @@ export default function ProfilePage() {
               <svg
                 width={16}
                 height={16}
-                style={{filter: "brightness(0) invert(1)"}}
+                style={{ filter: "brightness(0) invert(1)" }}
               >
                 <use href="/sprite/sprite.svg#icon-user" />
               </svg>
@@ -249,7 +249,7 @@ export default function ProfilePage() {
                     <svg
                       width={16}
                       height={16}
-                      style={{flexShrink: 0, display: "block"}}
+                      style={{ flexShrink: 0, display: "block" }}
                     >
                       <use href="/sprite/sprite.svg#icon-trash" />
                     </svg>
