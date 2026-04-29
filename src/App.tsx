@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import {useEffect} from "react";
+import {HashRouter, Routes, Route, Navigate} from "react-router-dom";
+import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useAppDispatch, useAppSelector } from "./hooks/redux";
+import {useAppDispatch, useAppSelector} from "./hooks/redux";
 import {
   fetchCurrentUser,
   logout,
@@ -21,7 +21,7 @@ import AddPetPage from "./pages/AddPetPage/AddPetPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Loader from "./components/Loader/Loader";
 
-const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
+const PrivateRoute = ({children}: {children: React.ReactNode}) => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
   return isLoggedIn ? <>{children}</> : <Navigate to="/login" replace />;
 };
@@ -47,7 +47,7 @@ const App = () => {
   }
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -75,7 +75,7 @@ const App = () => {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <ToastContainer position="top-right" autoClose={3000} />
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
